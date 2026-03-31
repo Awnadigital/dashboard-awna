@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Gastos Digitales — Awna Digital</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff; --bg2: #f5f5f5; --bg3: #eeeeee;
+    --text: #1a1a1a; --text2: #555; --text3: #888;
+    --border: rgba(0,0,0,0.1); --border2: rgba(0,0,0,0.18);
+    --radius: 8px; --radius-lg: 12px;
+    --blue: #378ADD; --green: #1D9E75; --purple: #7F77DD;
+    --amber: #BA7517; --teal: #0F6E56; --yellow: #EF9F27;
+    --red: #E24B4A; --gray: #888780;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a2e; --bg2: #22223b; --bg3: #2d2d44;
+      --text: #f0f0f0; --text2: #aaa; --text3: #666;
+      --border: rgba(255,255,255,0.1); --border2: rgba(255,255,255,0.18);
+    }
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 24px 20px; }
+  header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+  .logo { font-size: 18px; font-weight: 600; color: var(--text); }
+  .logo span { color: var(--blue); }
+  .period { font-size: 12px; color: var(--text3); background: var(--bg2); padding: 5px 12px; border-radius: 20px; border: 0.5px solid var(--border); }
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
+  .kpi { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+  .kpi-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+  .kpi-val { font-size: 22px; font-weight: 600; color: var(--text); }
+  .kpi-sub { font-size: 11px; color: var(--text3); margin-top: 3px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 16px; background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 12px 16px; }
+  .filters label { font-size: 12px; color: var(--text2); font-weight: 500; }
+  .filters select { font-size: 12px; padding: 6px 10px; border-radius: var(--radius); border: 0.5px solid var(--border2); background: var(--bg2); color: var(--text); cursor: pointer; }
+  .reset-btn { font-size: 12px; padding: 6px 14px; border-radius: var(--radius); border: 0.5px solid var(--border2); background: transparent; color: var(--text2); cursor: pointer; margin-left: auto; }
+  .reset-btn:hover { background: var(--bg2); }
+  .grid-2 { display: grid; grid-template-columns: 3fr 2fr; gap: 14px; margin-bottom: 14px; }
+  .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 18px; margin-bottom: 14px; }
+  .card-title { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 14px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+  .leg-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text2); }
+  .leg-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+  .bar-item { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .bar-label { font-size: 11px; color: var(--text); min-width: 130px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bar-track { flex: 1; height: 8px; background: var(--bg2); border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; transition: width .4s; }
+  .bar-val { font-size: 10px; color: var(--text2); min-width: 64px; text-align: right; }
+  .hm-wrap { overflow-x: auto; }
+  table.hm { border-collapse: collapse; font-size: 9px; width: 100%; }
+  table.hm th { font-size: 9px; color: var(--text3); font-weight: 500; padding: 4px 5px; text-align: center; white-space: nowrap; }
+  table.hm td { padding: 3px 4px; text-align: center; border-radius: 3px; font-size: 8px; min-width: 30px; }
+  .badge-2026 { display: inline-block; font-size: 9px; padding: 1px 6px; border-radius: 8px; background: #dbeeff; color: #1565c0; font-weight: 600; margin-left: 6px; }
+  footer { text-align: center; font-size: 11px; color: var(--text3); margin-top: 24px; padding-top: 16px; border-top: 0.5px solid var(--border); }
+  @media (max-width: 700px) {
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">Awna <span>Digital</span> — Control de Gastos</div>
+    <div class="period">Jun 2023 – Mar 2026 &nbsp;|&nbsp; 5.140 transacciones &nbsp;|&nbsp; 131 plataformas</div>
+  </header>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="filters">
+    <label>Año</label>
+    <select id="fAño"><option value="">Todos</option></select>
+    <label>Mes</label>
+    <select id="fMes"><option value="">Todos</option></select>
+    <label>Categoría</label>
+    <select id="fCat"><option value="">Todas</option></select>
+    <button class="reset-btn" onclick="reset()">Limpiar filtros</button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Evolución mensual del gasto — CLP</div>
+    <div class="legend" id="leg"></div>
+    <div style="position:relative;width:100%;height:250px"><canvas id="cEvol"></canvas></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card" style="margin-bottom:0">
+      <div class="card-title">Top plataformas por inversión total</div>
+      <div id="topBars"></div>
+    </div>
+    <div class="card" style="margin-bottom:0">
+      <div class="card-title">Distribución por categoría</div>
+      <div style="position:relative;width:100%;height:220px"><canvas id="cDona"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="card-title">Heatmap — Gasto mensual por categoría (últimos 18 meses)</div>
+    <div class="hm-wrap"><table class="hm" id="tHeat"></table></div>
+  </div>
+
+  <footer>
+    Generado por Awna Digital &nbsp;·&nbsp; Datos reales de tarjetas virtuales &nbsp;·&nbsp; Moneda base: CLP
+  </footer>
+</div>
+
+<script>
+const D={"m":[{"my":"2023-06","yr":2023,"mn":6,"cat":"Audiovisual / Diseño","tot":108505},{"my":"2023-06","yr":2023,"mn":6,"cat":"IA / Automatización","tot":16330},{"my":"2023-06","yr":2023,"mn":6,"cat":"Inversión Publicitaria","tot":19266453},{"my":"2023-06","yr":2023,"mn":6,"cat":"Marketing y Growth","tot":124494},{"my":"2023-06","yr":2023,"mn":6,"cat":"Tecnología / TI","tot":11350},{"my":"2023-07","yr":2023,"mn":7,"cat":"Audiovisual / Diseño","tot":127352},{"my":"2023-07","yr":2023,"mn":7,"cat":"IA / Automatización","tot":16872},{"my":"2023-07","yr":2023,"mn":7,"cat":"Inversión Publicitaria","tot":14799384},{"my":"2023-07","yr":2023,"mn":7,"cat":"Legal / Compliance","tot":40058},{"my":"2023-07","yr":2023,"mn":7,"cat":"Tecnología / TI","tot":16529},{"my":"2023-08","yr":2023,"mn":8,"cat":"Audiovisual / Diseño","tot":199774},{"my":"2023-08","yr":2023,"mn":8,"cat":"IA / Automatización","tot":17459},{"my":"2023-08","yr":2023,"mn":8,"cat":"Inversión Publicitaria","tot":11651932},{"my":"2023-08","yr":2023,"mn":8,"cat":"Legal / Compliance","tot":37607},{"my":"2023-08","yr":2023,"mn":8,"cat":"Marketing y Growth","tot":867},{"my":"2023-08","yr":2023,"mn":8,"cat":"Tecnología / TI","tot":535188},{"my":"2023-09","yr":2023,"mn":9,"cat":"Audiovisual / Diseño","tot":203097},{"my":"2023-09","yr":2023,"mn":9,"cat":"IA / Automatización","tot":18192},{"my":"2023-09","yr":2023,"mn":9,"cat":"Inversión Publicitaria","tot":7491549},{"my":"2023-09","yr":2023,"mn":9,"cat":"Legal / Compliance","tot":37615},{"my":"2023-09","yr":2023,"mn":9,"cat":"Marketing y Growth","tot":920},{"my":"2023-09","yr":2023,"mn":9,"cat":"Tecnología / TI","tot":473484},{"my":"2023-10","yr":2023,"mn":10,"cat":"Audiovisual / Diseño","tot":206710},{"my":"2023-10","yr":2023,"mn":10,"cat":"IA / Automatización","tot":37393},{"my":"2023-10","yr":2023,"mn":10,"cat":"Inversión Publicitaria","tot":11081829},{"my":"2023-10","yr":2023,"mn":10,"cat":"Legal / Compliance","tot":39470},{"my":"2023-10","yr":2023,"mn":10,"cat":"Marketing y Growth","tot":137700},{"my":"2023-10","yr":2023,"mn":10,"cat":"Tecnología / TI","tot":487273},{"my":"2023-11","yr":2023,"mn":11,"cat":"Audiovisual / Diseño","tot":203872},{"my":"2023-11","yr":2023,"mn":11,"cat":"IA / Automatización","tot":36401},{"my":"2023-11","yr":2023,"mn":11,"cat":"Inversión Publicitaria","tot":10842934},{"my":"2023-11","yr":2023,"mn":11,"cat":"Legal / Compliance","tot":38441},{"my":"2023-11","yr":2023,"mn":11,"cat":"Marketing y Growth","tot":452793},{"my":"2023-11","yr":2023,"mn":11,"cat":"Otros / Sin clasificar","tot":15348},{"my":"2023-11","yr":2023,"mn":11,"cat":"Tecnología / TI","tot":449571},{"my":"2023-12","yr":2023,"mn":12,"cat":"Audiovisual / Diseño","tot":212171},{"my":"2023-12","yr":2023,"mn":12,"cat":"IA / Automatización","tot":36052},{"my":"2023-12","yr":2023,"mn":12,"cat":"Inversión Publicitaria","tot":21500003},{"my":"2023-12","yr":2023,"mn":12,"cat":"Legal / Compliance","tot":38127},{"my":"2023-12","yr":2023,"mn":12,"cat":"Marketing y Growth","tot":714917},{"my":"2023-12","yr":2023,"mn":12,"cat":"Tecnología / TI","tot":585001},{"my":"2024-01","yr":2024,"mn":1,"cat":"Audiovisual / Diseño","tot":212378},{"my":"2024-01","yr":2024,"mn":1,"cat":"IA / Automatización","tot":37671},{"my":"2024-01","yr":2024,"mn":1,"cat":"Inversión Publicitaria","tot":21075377},{"my":"2024-01","yr":2024,"mn":1,"cat":"Legal / Compliance","tot":39757},{"my":"2024-01","yr":2024,"mn":1,"cat":"Marketing y Growth","tot":546687},{"my":"2024-01","yr":2024,"mn":1,"cat":"Tecnología / TI","tot":579529},{"my":"2024-02","yr":2024,"mn":2,"cat":"Audiovisual / Diseño","tot":244870},{"my":"2024-02","yr":2024,"mn":2,"cat":"IA / Automatización","tot":39749},{"my":"2024-02","yr":2024,"mn":2,"cat":"Inversión Publicitaria","tot":18035311},{"my":"2024-02","yr":2024,"mn":2,"cat":"Legal / Compliance","tot":41720},{"my":"2024-02","yr":2024,"mn":2,"cat":"Marketing y Growth","tot":583491},{"my":"2024-02","yr":2024,"mn":2,"cat":"Otros / Sin clasificar","tot":9482},{"my":"2024-02","yr":2024,"mn":2,"cat":"Tecnología / TI","tot":486916},{"my":"2024-03","yr":2024,"mn":3,"cat":"Audiovisual / Diseño","tot":224793},{"my":"2024-03","yr":2024,"mn":3,"cat":"Capacitación / Cursos","tot":46233},{"my":"2024-03","yr":2024,"mn":3,"cat":"IA / Automatización","tot":39652},{"my":"2024-03","yr":2024,"mn":3,"cat":"Inversión Publicitaria","tot":13098107},{"my":"2024-03","yr":2024,"mn":3,"cat":"Legal / Compliance","tot":41474},{"my":"2024-03","yr":2024,"mn":3,"cat":"Marketing y Growth","tot":721885},{"my":"2024-03","yr":2024,"mn":3,"cat":"Tecnología / TI","tot":596732},{"my":"2024-04","yr":2024,"mn":4,"cat":"Audiovisual / Diseño","tot":153424},{"my":"2024-04","yr":2024,"mn":4,"cat":"IA / Automatización","tot":19489},{"my":"2024-04","yr":2024,"mn":4,"cat":"Inversión Publicitaria","tot":12398339},{"my":"2024-04","yr":2024,"mn":4,"cat":"Legal / Compliance","tot":40744},{"my":"2024-04","yr":2024,"mn":4,"cat":"Marketing y Growth","tot":699722},{"my":"2024-04","yr":2024,"mn":4,"cat":"Otros / Sin clasificar","tot":9416},{"my":"2024-04","yr":2024,"mn":4,"cat":"Tecnología / TI","tot":790937},{"my":"2024-05","yr":2024,"mn":5,"cat":"Audiovisual / Diseño","tot":127365},{"my":"2024-05","yr":2024,"mn":5,"cat":"Capacitación / Cursos","tot":18478},{"my":"2024-05","yr":2024,"mn":5,"cat":"IA / Automatización","tot":27891},{"my":"2024-05","yr":2024,"mn":5,"cat":"Inversión Publicitaria","tot":7713839},{"my":"2024-05","yr":2024,"mn":5,"cat":"Legal / Compliance","tot":39649},{"my":"2024-05","yr":2024,"mn":5,"cat":"Marketing y Growth","tot":2215278},{"my":"2024-05","yr":2024,"mn":5,"cat":"Tecnología / TI","tot":562415},{"my":"2024-06","yr":2024,"mn":6,"cat":"Audiovisual / Diseño","tot":205004},{"my":"2024-06","yr":2024,"mn":6,"cat":"Capacitación / Cursos","tot":37808},{"my":"2024-06","yr":2024,"mn":6,"cat":"IA / Automatización","tot":27652},{"my":"2024-06","yr":2024,"mn":6,"cat":"Inversión Publicitaria","tot":9306830},{"my":"2024-06","yr":2024,"mn":6,"cat":"Legal / Compliance","tot":39650},{"my":"2024-06","yr":2024,"mn":6,"cat":"Marketing y Growth","tot":1381385},{"my":"2024-06","yr":2024,"mn":6,"cat":"Tecnología / TI","tot":612713},{"my":"2024-07","yr":2024,"mn":7,"cat":"Audiovisual / Diseño","tot":338117},{"my":"2024-07","yr":2024,"mn":7,"cat":"Capacitación / Cursos","tot":37109},{"my":"2024-07","yr":2024,"mn":7,"cat":"IA / Automatización","tot":46937},{"my":"2024-07","yr":2024,"mn":7,"cat":"Inversión Publicitaria","tot":10777655},{"my":"2024-07","yr":2024,"mn":7,"cat":"Legal / Compliance","tot":39581},{"my":"2024-07","yr":2024,"mn":7,"cat":"Marketing y Growth","tot":1204682},{"my":"2024-07","yr":2024,"mn":7,"cat":"Tecnología / TI","tot":674869},{"my":"2024-08","yr":2024,"mn":8,"cat":"Audiovisual / Diseño","tot":340180},{"my":"2024-08","yr":2024,"mn":8,"cat":"Capacitación / Cursos","tot":38098},{"my":"2024-08","yr":2024,"mn":8,"cat":"IA / Automatización","tot":47451},{"my":"2024-08","yr":2024,"mn":8,"cat":"Inversión Publicitaria","tot":11080424},{"my":"2024-08","yr":2024,"mn":8,"cat":"Legal / Compliance","tot":40567},{"my":"2024-08","yr":2024,"mn":8,"cat":"Marketing y Growth","tot":816350},{"my":"2024-08","yr":2024,"mn":8,"cat":"Tecnología / TI","tot":1289670},{"my":"2024-09","yr":2024,"mn":9,"cat":"Audiovisual / Diseño","tot":262434},{"my":"2024-09","yr":2024,"mn":9,"cat":"Capacitación / Cursos","tot":66739},{"my":"2024-09","yr":2024,"mn":9,"cat":"IA / Automatización","tot":47352},{"my":"2024-09","yr":2024,"mn":9,"cat":"Inversión Publicitaria","tot":10697033},{"my":"2024-09","yr":2024,"mn":9,"cat":"Legal / Compliance","tot":40756},{"my":"2024-09","yr":2024,"mn":9,"cat":"Marketing y Growth","tot":2446299},{"my":"2024-09","yr":2024,"mn":9,"cat":"Tecnología / TI","tot":866401},{"my":"2024-10","yr":2024,"mn":10,"cat":"Audiovisual / Diseño","tot":470793},{"my":"2024-10","yr":2024,"mn":10,"cat":"Capacitación / Cursos","tot":127261},{"my":"2024-10","yr":2024,"mn":10,"cat":"IA / Automatización","tot":46666},{"my":"2024-10","yr":2024,"mn":10,"cat":"Inversión Publicitaria","tot":14735656},{"my":"2024-10","yr":2024,"mn":10,"cat":"Legal / Compliance","tot":40536},{"my":"2024-10","yr":2024,"mn":10,"cat":"Marketing y Growth","tot":1353116},{"my":"2024-10","yr":2024,"mn":10,"cat":"Tecnología / TI","tot":806935},{"my":"2024-11","yr":2024,"mn":11,"cat":"Audiovisual / Diseño","tot":195732},{"my":"2024-11","yr":2024,"mn":11,"cat":"Capacitación / Cursos","tot":38873},{"my":"2024-11","yr":2024,"mn":11,"cat":"IA / Automatización","tot":68829},{"my":"2024-11","yr":2024,"mn":11,"cat":"Inversión Publicitaria","tot":11002515},{"my":"2024-11","yr":2024,"mn":11,"cat":"Legal / Compliance","tot":41570},{"my":"2024-11","yr":2024,"mn":11,"cat":"Marketing y Growth","tot":1228764},{"my":"2024-11","yr":2024,"mn":11,"cat":"Otros / Sin clasificar","tot":756875},{"my":"2024-11","yr":2024,"mn":11,"cat":"Tecnología / TI","tot":960164},{"my":"2024-12","yr":2024,"mn":12,"cat":"Audiovisual / Diseño","tot":479193},{"my":"2024-12","yr":2024,"mn":12,"cat":"Capacitación / Cursos","tot":80427},{"my":"2024-12","yr":2024,"mn":12,"cat":"IA / Automatización","tot":73041},{"my":"2024-12","yr":2024,"mn":12,"cat":"Inversión Publicitaria","tot":13705602},{"my":"2024-12","yr":2024,"mn":12,"cat":"Legal / Compliance","tot":41323},{"my":"2024-12","yr":2024,"mn":12,"cat":"Marketing y Growth","tot":1054057},{"my":"2024-12","yr":2024,"mn":12,"cat":"Otros / Sin clasificar","tot":30580},{"my":"2024-12","yr":2024,"mn":12,"cat":"Tecnología / TI","tot":924485},{"my":"2025-01","yr":2025,"mn":1,"cat":"Audiovisual / Diseño","tot":188668},{"my":"2025-01","yr":2025,"mn":1,"cat":"Capacitación / Cursos","tot":40288},{"my":"2025-01","yr":2025,"mn":1,"cat":"IA / Automatización","tot":106359},{"my":"2025-01","yr":2025,"mn":1,"cat":"Inversión Publicitaria","tot":11179326},{"my":"2025-01","yr":2025,"mn":1,"cat":"Legal / Compliance","tot":41325},{"my":"2025-01","yr":2025,"mn":1,"cat":"Marketing y Growth","tot":831181},{"my":"2025-01","yr":2025,"mn":1,"cat":"Otros / Sin clasificar","tot":150633},{"my":"2025-01","yr":2025,"mn":1,"cat":"Tecnología / TI","tot":1014675},{"my":"2025-02","yr":2025,"mn":2,"cat":"Audiovisual / Diseño","tot":240848},{"my":"2025-02","yr":2025,"mn":2,"cat":"Capacitación / Cursos","tot":38473},{"my":"2025-02","yr":2025,"mn":2,"cat":"IA / Automatización","tot":106850},{"my":"2025-02","yr":2025,"mn":2,"cat":"Inversión Publicitaria","tot":13925814},{"my":"2025-02","yr":2025,"mn":2,"cat":"Legal / Compliance","tot":39138},{"my":"2025-02","yr":2025,"mn":2,"cat":"Marketing y Growth","tot":480091},{"my":"2025-02","yr":2025,"mn":2,"cat":"Tecnología / TI","tot":1176350},{"my":"2025-03","yr":2025,"mn":3,"cat":"Audiovisual / Diseño","tot":246898},{"my":"2025-03","yr":2025,"mn":3,"cat":"Capacitación / Cursos","tot":354481},{"my":"2025-03","yr":2025,"mn":3,"cat":"IA / Automatización","tot":104142},{"my":"2025-03","yr":2025,"mn":3,"cat":"Inversión Publicitaria","tot":13295893},{"my":"2025-03","yr":2025,"mn":3,"cat":"Legal / Compliance","tot":40687},{"my":"2025-03","yr":2025,"mn":3,"cat":"Marketing y Growth","tot":468453},{"my":"2025-03","yr":2025,"mn":3,"cat":"Tecnología / TI","tot":1012590},{"my":"2025-04","yr":2025,"mn":4,"cat":"Audiovisual / Diseño","tot":273544},{"my":"2025-04","yr":2025,"mn":4,"cat":"Capacitación / Cursos","tot":39232},{"my":"2025-04","yr":2025,"mn":4,"cat":"IA / Automatización","tot":98052},{"my":"2025-04","yr":2025,"mn":4,"cat":"Inversión Publicitaria","tot":7353234},{"my":"2025-04","yr":2025,"mn":4,"cat":"Legal / Compliance","tot":44329},{"my":"2025-04","yr":2025,"mn":4,"cat":"Marketing y Growth","tot":390345},{"my":"2025-04","yr":2025,"mn":4,"cat":"Tecnología / TI","tot":1718124},{"my":"2025-05","yr":2025,"mn":5,"cat":"Audiovisual / Diseño","tot":271916},{"my":"2025-05","yr":2025,"mn":5,"cat":"Capacitación / Cursos","tot":38337},{"my":"2025-05","yr":2025,"mn":5,"cat":"IA / Automatización","tot":66887},{"my":"2025-05","yr":2025,"mn":5,"cat":"Inversión Publicitaria","tot":9059879},{"my":"2025-05","yr":2025,"mn":5,"cat":"Legal / Compliance","tot":47143},{"my":"2025-05","yr":2025,"mn":5,"cat":"Marketing y Growth","tot":1053378},{"my":"2025-05","yr":2025,"mn":5,"cat":"Otros / Sin clasificar","tot":27348},{"my":"2025-05","yr":2025,"mn":5,"cat":"Tecnología / TI","tot":1331781},{"my":"2025-06","yr":2025,"mn":6,"cat":"Audiovisual / Diseño","tot":667123},{"my":"2025-06","yr":2025,"mn":6,"cat":"Capacitación / Cursos","tot":55766},{"my":"2025-06","yr":2025,"mn":6,"cat":"IA / Automatización","tot":66488},{"my":"2025-06","yr":2025,"mn":6,"cat":"Inversión Publicitaria","tot":4583464},{"my":"2025-06","yr":2025,"mn":6,"cat":"Legal / Compliance","tot":100567},{"my":"2025-06","yr":2025,"mn":6,"cat":"Marketing y Growth","tot":490024},{"my":"2025-06","yr":2025,"mn":6,"cat":"Otros / Sin clasificar","tot":12881},{"my":"2025-06","yr":2025,"mn":6,"cat":"Tecnología / TI","tot":898744},{"my":"2025-07","yr":2025,"mn":7,"cat":"Audiovisual / Diseño","tot":134048},{"my":"2025-07","yr":2025,"mn":7,"cat":"Capacitación / Cursos","tot":39291},{"my":"2025-07","yr":2025,"mn":7,"cat":"IA / Automatización","tot":67577},{"my":"2025-07","yr":2025,"mn":7,"cat":"Inversión Publicitaria","tot":10337385},{"my":"2025-07","yr":2025,"mn":7,"cat":"Legal / Compliance","tot":44585},{"my":"2025-07","yr":2025,"mn":7,"cat":"Marketing y Growth","tot":495046},{"my":"2025-07","yr":2025,"mn":7,"cat":"Tecnología / TI","tot":716037},{"my":"2025-08","yr":2025,"mn":8,"cat":"Audiovisual / Diseño","tot":904180},{"my":"2025-08","yr":2025,"mn":8,"cat":"IA / Automatización","tot":66468},{"my":"2025-08","yr":2025,"mn":8,"cat":"Inversión Publicitaria","tot":6326372},{"my":"2025-08","yr":2025,"mn":8,"cat":"Legal / Compliance","tot":44369},{"my":"2025-08","yr":2025,"mn":8,"cat":"Marketing y Growth","tot":379498},{"my":"2025-08","yr":2025,"mn":8,"cat":"Otros / Sin clasificar","tot":23367},{"my":"2025-08","yr":2025,"mn":8,"cat":"Tecnología / TI","tot":1896025},{"my":"2025-09","yr":2025,"mn":9,"cat":"Audiovisual / Diseño","tot":525986},{"my":"2025-09","yr":2025,"mn":9,"cat":"Capacitación / Cursos","tot":29612},{"my":"2025-09","yr":2025,"mn":9,"cat":"IA / Automatización","tot":85842},{"my":"2025-09","yr":2025,"mn":9,"cat":"Inversión Publicitaria","tot":5950206},{"my":"2025-09","yr":2025,"mn":9,"cat":"Marketing y Growth","tot":544167},{"my":"2025-09","yr":2025,"mn":9,"cat":"Otros / Sin clasificar","tot":108196},{"my":"2025-09","yr":2025,"mn":9,"cat":"Tecnología / TI","tot":2869172},{"my":"2025-10","yr":2025,"mn":10,"cat":"Audiovisual / Diseño","tot":541016},{"my":"2025-10","yr":2025,"mn":10,"cat":"Capacitación / Cursos","tot":27325},{"my":"2025-10","yr":2025,"mn":10,"cat":"IA / Automatización","tot":129891},{"my":"2025-10","yr":2025,"mn":10,"cat":"Inversión Publicitaria","tot":5555801},{"my":"2025-10","yr":2025,"mn":10,"cat":"Legal / Compliance","tot":132639},{"my":"2025-10","yr":2025,"mn":10,"cat":"Marketing y Growth","tot":1110474},{"my":"2025-10","yr":2025,"mn":10,"cat":"Otros / Sin clasificar","tot":711791},{"my":"2025-10","yr":2025,"mn":10,"cat":"Tecnología / TI","tot":2838172},{"my":"2025-11","yr":2025,"mn":11,"cat":"Audiovisual / Diseño","tot":279189},{"my":"2025-11","yr":2025,"mn":11,"cat":"Capacitación / Cursos","tot":10173},{"my":"2025-11","yr":2025,"mn":11,"cat":"IA / Automatización","tot":110508},{"my":"2025-11","yr":2025,"mn":11,"cat":"Inversión Publicitaria","tot":9008955},{"my":"2025-11","yr":2025,"mn":11,"cat":"Marketing y Growth","tot":591958},{"my":"2025-11","yr":2025,"mn":11,"cat":"Otros / Sin clasificar","tot":1025462},{"my":"2025-11","yr":2025,"mn":11,"cat":"Tecnología / TI","tot":4039573},{"my":"2025-12","yr":2025,"mn":12,"cat":"Audiovisual / Diseño","tot":1001165},{"my":"2025-12","yr":2025,"mn":12,"cat":"Capacitación / Cursos","tot":43621},{"my":"2025-12","yr":2025,"mn":12,"cat":"IA / Automatización","tot":165624},{"my":"2025-12","yr":2025,"mn":12,"cat":"Inversión Publicitaria","tot":14427381},{"my":"2025-12","yr":2025,"mn":12,"cat":"Legal / Compliance","tot":135435},{"my":"2025-12","yr":2025,"mn":12,"cat":"Marketing y Growth","tot":711236},{"my":"2025-12","yr":2025,"mn":12,"cat":"Otros / Sin clasificar","tot":838303},{"my":"2025-12","yr":2025,"mn":12,"cat":"Tecnología / TI","tot":2658916},{"my":"2026-01","yr":2026,"mn":1,"cat":"Audiovisual / Diseño","tot":770515},{"my":"2026-01","yr":2026,"mn":1,"cat":"Capacitación / Cursos","tot":42771},{"my":"2026-01","yr":2026,"mn":1,"cat":"IA / Automatización","tot":133469},{"my":"2026-01","yr":2026,"mn":1,"cat":"Inversión Publicitaria","tot":17032398},{"my":"2026-01","yr":2026,"mn":1,"cat":"Legal / Compliance","tot":112502},{"my":"2026-01","yr":2026,"mn":1,"cat":"Marketing y Growth","tot":597393},{"my":"2026-01","yr":2026,"mn":1,"cat":"Otros / Sin clasificar","tot":195986},{"my":"2026-01","yr":2026,"mn":1,"cat":"Tecnología / TI","tot":2333437},{"my":"2026-02","yr":2026,"mn":2,"cat":"Audiovisual / Diseño","tot":565227},{"my":"2026-02","yr":2026,"mn":2,"cat":"Capacitación / Cursos","tot":54268},{"my":"2026-02","yr":2026,"mn":2,"cat":"IA / Automatización","tot":87462},{"my":"2026-02","yr":2026,"mn":2,"cat":"Inversión Publicitaria","tot":7047314},{"my":"2026-02","yr":2026,"mn":2,"cat":"Legal / Compliance","tot":118094},{"my":"2026-02","yr":2026,"mn":2,"cat":"Marketing y Growth","tot":575730},{"my":"2026-02","yr":2026,"mn":2,"cat":"Otros / Sin clasificar","tot":495491},{"my":"2026-02","yr":2026,"mn":2,"cat":"Tecnología / TI","tot":2576392},{"my":"2026-03","yr":2026,"mn":3,"cat":"Audiovisual / Diseño","tot":644216},{"my":"2026-03","yr":2026,"mn":3,"cat":"Capacitación / Cursos","tot":43793},{"my":"2026-03","yr":2026,"mn":3,"cat":"IA / Automatización","tot":560462},{"my":"2026-03","yr":2026,"mn":3,"cat":"Inversión Publicitaria","tot":8184985},{"my":"2026-03","yr":2026,"mn":3,"cat":"Legal / Compliance","tot":62487},{"my":"2026-03","yr":2026,"mn":3,"cat":"Marketing y Growth","tot":836595},{"my":"2026-03","yr":2026,"mn":3,"cat":"Otros / Sin clasificar","tot":1276349},{"my":"2026-03","yr":2026,"mn":3,"cat":"Tecnología / TI","tot":2188231}],"p":[{"p":"Meta Ads","cat":"Inversión Publicitaria","tot":234733690},{"p":"Google Ads","cat":"Inversión Publicitaria","tot":137962637},{"p":"Amazon AWS","cat":"Tecnología / TI","tot":21083635},{"p":"LinkedIn Ads","cat":"Inversión Publicitaria","tot":9683892},{"p":"TikTok Ads","cat":"Inversión Publicitaria","tot":9460159},{"p":"Labsmobile SMS","cat":"Marketing y Growth","tot":6870617},{"p":"Adobe Creative Cloud","cat":"Audiovisual / Diseño","tot":6863769},{"p":"SEMrush","cat":"Marketing y Growth","tot":5547773},{"p":"Google Cloud","cat":"Tecnología / TI","tot":4828837},{"p":"Notion","cat":"Tecnología / TI","tot":3480647},{"p":"Google Workspace","cat":"Tecnología / TI","tot":3065032},{"p":"Metricool","cat":"Marketing y Growth","tot":2486977},{"p":"Shutterstock","cat":"Audiovisual / Diseño","tot":2417957},{"p":"SER Acquisition","cat":"Marketing y Growth","tot":1952698},{"p":"Apollo.io","cat":"Marketing y Growth","tot":1844858},{"p":"Lukas Escobar","cat":"Otros / Sin clasificar","tot":1620965},{"p":"Typeform","cat":"Marketing y Growth","tot":1521492},{"p":"GoDaddy","cat":"Tecnología / TI","tot":1485340},{"p":"DocuSign","cat":"Legal / Compliance","tot":1479685},{"p":"OpenAI API","cat":"IA / Automatización","tot":1276801}],"c":[{"cat":"Inversión Publicitaria","tot":393529179},{"cat":"Tecnología / TI","tot":40978381},{"cat":"Marketing y Growth","tot":25238976},{"cat":"Audiovisual / Diseño","tot":11770303},{"cat":"Otros / Sin clasificar","tot":5687508},{"cat":"IA / Automatización","tot":2657160},{"cat":"Legal / Compliance","tot":1681945},{"cat":"Capacitación / Cursos","tot":1348457}],"meta":{"total":482891909,"n_tx":5140,"n_plat":131,"años":[2023,2024,2025,2026]}};
+const CC={'Inversión Publicitaria':'#378ADD','Tecnología / TI':'#1D9E75','Marketing y Growth':'#7F77DD','Audiovisual / Diseño':'#BA7517','IA / Automatización':'#0F6E56','Capacitación / Cursos':'#EF9F27','Legal / Compliance':'#E24B4A','Otros / Sin clasificar':'#888780'};
+const CATS=Object.keys(CC);
+const MES=['','Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+let CH={};
+let F={yr:'',mn:'',cat:''};
+
+function fmt(n){return Math.round(n).toLocaleString('es-CL')}
+function fmtM(n){if(n>=1e9)return'$'+(n/1e9).toFixed(1)+'B';if(n>=1e6)return'$'+(n/1e6).toFixed(1)+'M';if(n>=1e3)return'$'+(n/1e3).toFixed(0)+'K';return'$'+fmt(n)}
+function lbl(my){const[y,m]=my.split('-');return MES[+m]+" '"+y.slice(2)}
+
+function rows(){
+  return D.m.filter(r=>{
+    if(F.yr&&r.yr!=F.yr)return false;
+    if(F.mn&&r.mn!=F.mn)return false;
+    if(F.cat&&r.cat!==F.cat)return false;
+    return true;
+  });
+}
+
+function buildFilters(){
+  const fA=document.getElementById('fAño');
+  D.meta.años.forEach(a=>{const o=document.createElement('option');o.value=a;o.text=a+(a==2026?' (parcial)':'');fA.appendChild(o);});
+  const mns=[...new Set(D.m.map(r=>r.mn))].sort((a,b)=>a-b);
+  const fM=document.getElementById('fMes');
+  mns.forEach(m=>{const o=document.createElement('option');o.value=m;o.text=MES[m];fM.appendChild(o);});
+  CATS.forEach(c=>{const o=document.createElement('option');o.value=c;o.text=c;document.getElementById('fCat').appendChild(o);});
+  document.getElementById('fAño').onchange=e=>{F.yr=e.target.value;render()};
+  document.getElementById('fMes').onchange=e=>{F.mn=e.target.value;render()};
+  document.getElementById('fCat').onchange=e=>{F.cat=e.target.value;render()};
+}
+
+function renderKPIs(){
+  const d=rows();
+  const total=d.reduce((s,r)=>s+r.tot,0);
+  const meses=new Set(d.map(r=>r.my)).size;
+  const prom=meses?total/meses:0;
+  const topC=CATS.reduce((a,c)=>{const t=d.filter(r=>r.cat===c).reduce((s,r)=>s+r.tot,0);return t>a.t?{c,t}:a},{c:'—',t:0});
+  const has2026=d.some(r=>r.yr==2026);
+  document.getElementById('kpis').innerHTML=`
+    <div class="kpi"><div class="kpi-label">Gasto total${has2026?'<span class="badge-2026">incl. 2026</span>':''}</div><div class="kpi-val">${fmtM(total)}</div><div class="kpi-sub">CLP período filtrado</div></div>
+    <div class="kpi"><div class="kpi-label">Promedio mensual</div><div class="kpi-val">${fmtM(prom)}</div><div class="kpi-sub">${meses} meses con gasto</div></div>
+    <div class="kpi"><div class="kpi-label">Categoría líder</div><div class="kpi-val" style="font-size:14px">${topC.c}</div><div class="kpi-sub">${topC.t?fmtM(topC.t):''}</div></div>
+    <div class="kpi"><div class="kpi-label">Plataformas</div><div class="kpi-val">${D.meta.n_plat}</div><div class="kpi-sub">clasificadas en total</div></div>`;
+}
+
+function renderEvol(){
+  const d=rows();
+  const meses=[...new Set(d.map(r=>r.my))].sort();
+  const cA=F.cat?[F.cat]:CATS;
+  const datasets=cA.map(cat=>({
+    label:cat,
+    data:meses.map(my=>d.filter(r=>r.my===my&&r.cat===cat).reduce((s,r)=>s+r.tot,0)),
+    backgroundColor:CC[cat]+'BB',borderColor:CC[cat],borderWidth:1,fill:true
+  }));
+  document.getElementById('leg').innerHTML=cA.map(c=>`<span class="leg-item"><span class="leg-dot" style="background:${CC[c]}"></span>${c}</span>`).join('');
+  if(CH.e)CH.e.destroy();
+  CH.e=new Chart(document.getElementById('cEvol'),{
+    type:'bar',data:{labels:meses.map(lbl),datasets},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+ctx.dataset.label+': $'+fmt(ctx.raw)+' CLP'}}},
+      scales:{x:{stacked:true,ticks:{font:{size:9},maxRotation:50,autoSkip:true,maxTicksLimit:28},grid:{display:false}},
+              y:{stacked:true,ticks:{font:{size:9},callback:v=>fmtM(v)},grid:{color:'rgba(128,128,128,.07)'}}}}
+  });
+}
+
+function renderDona(){
+  const d=rows();
+  const vals=CATS.map(c=>({c,t:d.filter(r=>r.cat===c).reduce((s,r)=>s+r.tot,0)})).filter(x=>x.t>0).sort((a,b)=>b.t-a.t);
+  if(CH.d)CH.d.destroy();
+  CH.d=new Chart(document.getElementById('cDona'),{
+    type:'doughnut',
+    data:{labels:vals.map(x=>x.c),datasets:[{data:vals.map(x=>x.t),backgroundColor:vals.map(x=>CC[x.c]),borderWidth:2,borderColor:'transparent'}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'58%',
+      plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10,padding:8}},
+               tooltip:{callbacks:{label:ctx=>{const tot=vals.reduce((s,x)=>s+x.t,0);return' '+Math.round(ctx.parsed/tot*100)+'% — '+fmtM(ctx.parsed)}}}}}
+  });
+}
+
+function renderTop(){
+  const d=rows();
+  const tops=D.p.map(x=>({...x,tot:(!F.cat||x.cat===F.cat)?x.tot:0})).filter(x=>x.tot>0).sort((a,b)=>b.tot-a.tot).slice(0,14);
+  const mx=tops[0]?.tot||1;
+  document.getElementById('topBars').innerHTML=tops.map(x=>`
+    <div class="bar-item">
+      <div class="bar-label" title="${x.p}">${x.p}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.round(x.tot/mx*100)}%;background:${CC[x.cat]||'#888'}"></div></div>
+      <div class="bar-val">${fmtM(x.tot)}</div>
+    </div>`).join('');
+}
+
+function renderHeat(){
+  const d=rows();
+  const meses=[...new Set(d.map(r=>r.my))].sort().slice(-18);
+  const cA=F.cat?[F.cat]:CATS.filter(c=>d.some(r=>r.cat===c));
+  const maxV=Math.max(...meses.flatMap(my=>cA.map(cat=>d.filter(r=>r.my===my&&r.cat===cat).reduce((s,r)=>s+r.tot,0))));
+  function hc(v,cat){if(!v)return'transparent';const p=v/maxV;const h=CC[cat]||'#888';const a=Math.round(p*200+30);return h+(a<16?'0':'')+a.toString(16)}
+  let html='<thead><tr><th style="text-align:left;min-width:90px">Categoría</th>';
+  meses.forEach(m=>{const[y,mo]=m.split('-');const is26=+y===2026;html+=`<th style="${is26?'color:#1565c0;font-weight:700':''}">${MES[+mo]}<br>'${y.slice(2)}</th>`;});
+  html+='</tr></thead><tbody>';
+  cA.forEach(cat=>{
+    html+=`<tr><td style="text-align:left;color:#666;white-space:nowrap;padding-right:8px;font-size:9px">${cat}</td>`;
+    meses.forEach(my=>{
+      const v=d.filter(r=>r.my===my&&r.cat===cat).reduce((s,r)=>s+r.tot,0);
+      html+=`<td style="background:${hc(v,cat)}">${v?fmtM(v):''}</td>`;
+    });
+    html+='</tr>';
+  });
+  html+='</tbody>';
+  document.getElementById('tHeat').innerHTML=html;
+}
+
+function render(){renderKPIs();renderEvol();renderDona();renderTop();renderHeat()}
+function reset(){F={yr:'',mn:'',cat:''};['fAño','fMes','fCat'].forEach(id=>document.getElementById(id).value='');render()}
+
+buildFilters();
+render();
+</script>
+</body>
+</html>
