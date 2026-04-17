@@ -3,1009 +3,613 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Imfluid — Plan de Marketing Digital</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<title>EMobilitex — Renueva tu Colectivo Eléctrico con Subsidio PIE</title>
+<meta name="description" content="El ahorro en combustible paga tu vehículo eléctrico. Subsidio PIE de $9.700.000. Calcula cuánto puedes ahorrar hoy.">
 <style>
-:root {
-  --text-1: #1d1d1b;
-  --text-2: #5c5c58;
-  --text-3: #8a8a85;
-  --bg-1: #ffffff;
-  --bg-2: #f5f4f0;
-  --border-1: #d4d4cf;
-  --border-2: #e5e5e0;
-  --accent: #185FA5;
-  --accent-light: #E6F1FB;
-  --radius-lg: 10px;
-  --radius-md: 6px;
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --purple:#9333ea;--purple-light:#b13fff;--purple-dark:#7c22ce;--purple-deep:#5b21b6;
+  --purple-bg:#faf5ff;--blue-brand:#2419ff;--blue-light:#6366f1;--blue-dark:#1e1b4b;
+  --indigo:#4f46e5;
+  --gradient:linear-gradient(135deg,#b13fff,#2419ff);
+  --gradient-hover:linear-gradient(135deg,#c455ff,#3b35ff);
+  --gradient-dark:linear-gradient(165deg,#0f0a2e 0%,#1e1b4b 40%,#2d1a6e 70%,#1a103d 100%);
+  --green:#22c55e;--green-dark:#16a34a;--green-bg:#f0fdf4;
+  --navy:#0f0a2e;--dark:#1a103d;
+  --gray-900:#111827;--gray-700:#374151;--gray-500:#6b7280;--gray-300:#d1d5db;--gray-100:#f3f4f6;
+  --white:#fff;--red:#ef4444;--orange:#f59e0b;
+  --radius:12px;--radius-lg:20px;
+  --shadow:0 4px 24px rgba(0,0,0,.08);--shadow-lg:0 8px 40px rgba(0,0,0,.12);
+  --shadow-purple:0 6px 28px rgba(177,63,255,.25);
+  --font:'Segoe UI',system-ui,-apple-system,sans-serif;
+  --transition:.3s cubic-bezier(.4,0,.2,1);
 }
-*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans','Segoe UI',system-ui,sans-serif;font-size:14px;color:var(--text-1);line-height:1.6;background:#fafaf8}
+body{font-family:var(--font);color:var(--gray-900);line-height:1.6;background:var(--white);overflow-x:hidden}
+img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
+.container{max-width:1120px;margin:0 auto;padding:0 20px}
+.section{padding:72px 0}
+.section-title{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;line-height:1.15;margin-bottom:16px;color:var(--navy)}
+.section-subtitle{font-size:1.1rem;color:var(--gray-500);max-width:600px;margin-bottom:40px}
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--purple-bg);color:var(--purple-dark);font-size:.85rem;font-weight:700;padding:6px 14px;border-radius:100px;letter-spacing:.02em;text-transform:uppercase}
 
-/* ===== TOP HEADER ===== */
-.app-header{
-  background:#fff;
-  border-bottom:1px solid var(--border-2);
-  padding:0 24px;
-  position:sticky;top:0;z-index:100;
-}
-.app-header-inner{
-  max-width:1280px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;
-  height:56px;
-}
-.app-logo{
-  font-size:18px;font-weight:600;color:var(--text-1);letter-spacing:-0.02em;
-}
-.app-logo span{color:var(--accent);}
-.app-nav{display:flex;gap:2px}
-.app-nav-btn{
-  background:none;border:none;padding:10px 18px;font-size:13px;font-weight:400;
-  color:var(--text-2);cursor:pointer;border-radius:var(--radius-md);
-  transition:all .15s;position:relative;
-}
-.app-nav-btn:hover{background:var(--bg-2);color:var(--text-1)}
-.app-nav-btn.active{color:var(--accent);font-weight:500;background:var(--accent-light)}
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font);font-size:1rem;font-weight:700;padding:16px 32px;border-radius:100px;border:none;cursor:pointer;transition:all var(--transition);text-align:center;line-height:1.2}
+.btn-primary{background:var(--gradient);color:var(--white);box-shadow:var(--shadow-purple)}
+.btn-primary:hover{background:var(--gradient-hover);transform:translateY(-2px);box-shadow:0 8px 32px rgba(177,63,255,.4)}
+.btn-secondary{background:var(--white);color:var(--purple);border:2px solid var(--purple)}
+.btn-secondary:hover{background:var(--purple);color:var(--white);transform:translateY(-2px)}
+.btn-large{font-size:1.15rem;padding:20px 40px}
+.btn-cta{background:var(--gradient);color:var(--white);font-size:1.15rem;padding:20px 40px;box-shadow:0 6px 28px rgba(177,63,255,.35);animation:pulse-glow 2.5s infinite}
+.btn-cta:hover{background:var(--gradient-hover);transform:translateY(-3px) scale(1.02);box-shadow:0 8px 36px rgba(177,63,255,.5)}
+@keyframes pulse-glow{0%,100%{box-shadow:0 6px 28px rgba(177,63,255,.35)}50%{box-shadow:0 6px 36px rgba(177,63,255,.55)}}
 
-/* ===== WRAPPER ===== */
-.app-body{max-width:1280px;margin:0 auto;padding:0}
-.section-wrap{display:none}
-.section-wrap.active{display:block}
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(15,10,46,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(177,63,255,.12);padding:12px 0;transition:all var(--transition)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:1.35rem;font-weight:800;color:var(--white);letter-spacing:-.02em}
+.nav-logo span{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-cta{font-size:.9rem;padding:10px 24px}
 
-/* ===== STRATEGY SECTION ===== */
-.shell{display:flex;gap:0;min-height:calc(100vh - 56px)}
-.sidebar{width:210px;flex-shrink:0;border-right:0.5px solid var(--border-2);padding:12px 0;background:#fff;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto}
-.sidebar-title{font-size:11px;font-weight:500;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;padding:0 14px 8px}
-.nav-item{display:block;width:100%;text-align:left;background:none;border:none;padding:7px 14px;font-size:13px;color:var(--text-2);cursor:pointer;border-left:2px solid transparent;transition:all .15s}
-.nav-item:hover{background:var(--bg-2);color:var(--text-1)}
-.nav-item.active{background:var(--bg-2);color:var(--text-1);border-left:2px solid var(--accent);font-weight:500}
-.nav-section{margin-top:10px;padding-top:10px;border-top:0.5px solid var(--border-2)}
-.main{flex:1;overflow:hidden;padding:0;background:#fff}
-.panel{display:none;padding:20px 24px}
-.panel.active{display:block}
-.panel-header{margin-bottom:16px}
-.panel-title{font-size:18px;font-weight:500;color:var(--text-1)}
-.panel-sub{font-size:13px;color:var(--text-2);margin-top:3px}
-.tabs{display:flex;gap:4px;margin-bottom:18px;border-bottom:0.5px solid var(--border-2);padding-bottom:0}
-.tab{background:none;border:none;font-size:13px;padding:8px 14px;cursor:pointer;color:var(--text-2);border-bottom:2px solid transparent;margin-bottom:-1px}
-.tab:hover{color:var(--text-1)}
-.tab.active{color:var(--accent);border-bottom:2px solid var(--accent);font-weight:500}
-.tab-content{display:none}
-.tab-content.active{display:block}
-.card{background:var(--bg-1);border:0.5px solid var(--border-2);border-radius:var(--radius-lg);padding:14px 16px;margin-bottom:12px}
-.card-title{font-size:13px;font-weight:500;margin-bottom:6px}
-.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--radius-md);margin-right:4px;margin-bottom:4px;font-weight:500}
-.b-blue{background:#E6F1FB;color:#0C447C}
-.b-teal{background:#E1F5EE;color:#085041}
-.b-amber{background:#FAEEDA;color:#633806}
-.b-coral{background:#FAECE7;color:#712B13}
-.b-purple{background:#EEEDFE;color:#3C3489}
-.b-green{background:#EAF3DE;color:#27500A}
-.b-gray{background:#F1EFE8;color:#444441}
-.metric-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px}
-.metric{background:var(--bg-2);border-radius:var(--radius-md);padding:10px 12px}
-.metric-label{font-size:11px;color:var(--text-3);margin-bottom:2px}
-.metric-val{font-size:16px;font-weight:500}
-.section-label{font-size:11px;font-weight:500;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin:14px 0 6px}
-ul.pl{padding-left:16px}
-ul.pl li{font-size:13px;color:var(--text-2);margin-bottom:4px}
-.pain{border-left:3px solid #E24B4A;padding:8px 12px;background:#FCEBEB;border-radius:0 var(--radius-md) var(--radius-md) 0;margin-bottom:8px;font-size:13px;color:#501313}
-.insight{border-left:3px solid var(--accent);padding:8px 12px;background:var(--accent-light);border-radius:0 var(--radius-md) var(--radius-md) 0;margin-bottom:8px;font-size:13px;color:#042C53}
-.lp-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.lp-block{border:0.5px solid var(--border-2);border-radius:var(--radius-md);padding:10px 12px;font-size:12px}
-.lp-block-title{font-size:11px;font-weight:500;color:var(--text-3);text-transform:uppercase;margin-bottom:5px}
-.channel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:12px}
-.channel-card{border:0.5px solid var(--border-2);border-radius:var(--radius-md);padding:10px 12px}
-.channel-name{font-size:12px;font-weight:500;margin-bottom:3px}
-.priority-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
-.p-high{background:#639922}.p-med{background:#BA7517}.p-low{background:#888780}
-.overview-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:16px}
-.ov-card{border:0.5px solid var(--border-2);border-radius:var(--radius-lg);padding:12px 14px;cursor:pointer;transition:all .15s}
-.ov-card:hover{background:var(--bg-2);transform:translateY(-1px)}
-.ov-card-title{font-size:13px;font-weight:500;margin-bottom:4px}
-.ov-card-desc{font-size:12px;color:var(--text-2)}
+/* HERO */
+.hero{padding:120px 0 80px;background:var(--gradient-dark);position:relative;overflow:hidden;min-height:90vh;display:flex;align-items:center}
+.hero::before{content:'';position:absolute;top:-40%;right:-15%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(177,63,255,.12) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(36,25,255,.08) 0%,transparent 70%);pointer-events:none}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(177,63,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(177,63,255,.035) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(177,63,255,.15);color:#d8b4fe;font-size:.8rem;font-weight:700;padding:8px 16px;border-radius:100px;border:1px solid rgba(177,63,255,.25);margin-bottom:20px;letter-spacing:.04em;text-transform:uppercase}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.1;color:var(--white);margin-bottom:20px}
+.hero h1 em{font-style:normal;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.15rem;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:28px;max-width:500px}
+.hero-bullets{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:36px}
+.hero-bullet{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.9);font-size:.95rem;font-weight:500}
+.hero-bullet .icon{width:28px;height:28px;border-radius:8px;background:rgba(177,63,255,.2);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap}
+.hero-visual{display:flex;align-items:center;justify-content:center;position:relative}
+.hero-dash{background:rgba(255,255,255,.04);border:1px solid rgba(177,63,255,.15);border-radius:var(--radius-lg);padding:32px;backdrop-filter:blur(10px);position:relative;width:100%;max-width:420px}
+.hero-dash::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius-lg);background:var(--gradient);z-index:-1;opacity:.1}
+.dash-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:20px;text-align:center}
+.dash-flow{display:flex;flex-direction:column;gap:12px}
+.dash-row{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);transition:all var(--transition)}
+.dash-row:hover{background:rgba(255,255,255,.07)}
+.dash-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.dash-icon.car{background:rgba(177,63,255,.15)}
+.dash-icon.sub{background:rgba(99,102,241,.2)}
+.dash-icon.cuota{background:rgba(255,255,255,.08)}
+.dash-icon.ahorro{background:rgba(34,197,94,.15)}
+.dash-info{flex:1;min-width:0}
+.dash-label{font-size:.8rem;color:rgba(255,255,255,.5);font-weight:500;line-height:1.2}
+.dash-val{font-size:1.15rem;font-weight:800;color:var(--white)}
+.dash-val.purple{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.dash-val.green{color:#4ade80}
+.dash-val.dim{color:rgba(255,255,255,.6)}
+.dash-connector{width:2px;height:10px;background:rgba(177,63,255,.2);margin:0 auto;border-radius:1px}
+.dash-result{margin-top:16px;padding:20px;border-radius:14px;background:var(--gradient);text-align:center;position:relative;overflow:hidden}
+.dash-result::after{content:'';position:absolute;top:-30%;right:-20%;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.08);pointer-events:none}
+.dash-result-label{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.dash-result-val{font-size:2rem;font-weight:900;color:var(--white);position:relative}
+.dash-result-sub{font-size:.8rem;color:rgba(255,255,255,.7);margin-top:4px}
 
-/* ===== CALENDAR SECTION ===== */
-.cal-wrap{padding:20px 24px;background:#fff;min-height:calc(100vh - 56px)}
-.top-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 0 12px;flex-wrap:wrap;gap:8px}
-.month-tabs{display:flex;gap:4px}
-.mtab{background:none;border:0.5px solid var(--border-2);border-radius:var(--radius-md);padding:5px 14px;font-size:12px;cursor:pointer;color:var(--text-2);transition:all .15s}
-.mtab.active{background:var(--accent-light);color:#0C447C;border-color:#B5D4F4;font-weight:500}
-.filters{display:flex;gap:6px;flex-wrap:wrap}
-.fchip{background:none;border:0.5px solid var(--border-2);border-radius:20px;padding:3px 10px;font-size:11px;cursor:pointer;color:var(--text-2);transition:all .15s}
-.fchip.on{font-weight:500}
-.fchip.ch-blog.on{background:#EAF3DE;color:#27500A;border-color:#97C459}
-.fchip.ch-linkedin.on{background:#E6F1FB;color:#0C447C;border-color:#85B7EB}
-.fchip.ch-email.on{background:#FAEEDA;color:#633806;border-color:#EF9F27}
-.fchip.ch-ads.on{background:#FAECE7;color:#712B13;border-color:#F0997B}
-.fchip.ch-webinar.on{background:#EEEDFE;color:#3C3489;border-color:#AFA9EC}
-.month-panel{display:none}
-.month-panel.active{display:block}
-.month-header{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:14px}
-.mstat{background:var(--bg-2);border-radius:var(--radius-md);padding:9px 12px}
-.mstat-label{font-size:10px;color:var(--text-3);margin-bottom:1px}
-.mstat-val{font-size:15px;font-weight:500}
-.week-block{margin-bottom:16px}
-.week-label{font-size:11px;font-weight:500;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;display:flex;align-items:center;gap:8px}
-.week-obj{font-size:11px;color:var(--text-2);font-weight:400;text-transform:none;letter-spacing:0}
-.cards-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
-.entry{background:var(--bg-1);border:0.5px solid var(--border-2);border-radius:var(--radius-lg);padding:10px 12px;border-left:3px solid #ccc;transition:all .15s}
-.entry:hover{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,0.06)}
-.entry.ch-blog{border-left-color:#639922}
-.entry.ch-linkedin{border-left-color:#185FA5}
-.entry.ch-email{border-left-color:#BA7517}
-.entry.ch-ads{border-left-color:#D85A30}
-.entry.ch-webinar{border-left-color:#534AB7}
-.entry.hidden{display:none}
-.entry-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px;gap:6px}
-.entry-title{font-size:12px;font-weight:500;line-height:1.3;flex:1}
-.b-blog{background:#EAF3DE;color:#27500A}
-.b-linkedin{background:#E6F1FB;color:#0C447C}
-.b-email{background:#FAEEDA;color:#633806}
-.b-ads{background:#FAECE7;color:#712B13}
-.b-webinar{background:#EEEDFE;color:#3C3489}
-.entry-meta{font-size:11px;color:var(--text-3);margin-top:4px}
-.ind-tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:20px;background:var(--bg-2);color:var(--text-2);margin-right:3px;margin-top:3px}
-.entry-note{font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4}
-.legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
-.leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-2)}
-.leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
-.week-divider{height:0.5px;background:var(--border-2);margin-bottom:14px}
-.focus-bar{background:var(--bg-2);border-radius:var(--radius-md);padding:10px 14px;margin-bottom:14px;font-size:12px;color:var(--text-2)}
-.focus-bar strong{color:var(--text-1);font-weight:500}
+/* CALCULATOR */
+.calc-section{background:var(--gray-100);padding:80px 0}
+.calc-wrapper{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);overflow:hidden}
+.calc-header{background:var(--gradient-dark);padding:36px 40px;color:var(--white);position:relative;overflow:hidden}
+.calc-header::after{content:'';position:absolute;top:-50%;right:-20%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(177,63,255,.15),transparent 70%);pointer-events:none}
+.calc-header h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800;margin-bottom:8px;position:relative;z-index:1}
+.calc-header p{color:rgba(255,255,255,.65);font-size:1rem;position:relative;z-index:1}
+.calc-body{padding:40px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.calc-inputs{display:flex;flex-direction:column;gap:28px}
+.input-group{position:relative}
+.input-group label{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-weight:600;font-size:.95rem;color:var(--gray-700)}
+.input-group .value-display{font-weight:800;color:var(--purple);font-size:1.05rem;background:var(--purple-bg);padding:4px 12px;border-radius:8px}
+.input-group input[type="range"]{width:100%;height:8px;border-radius:4px;background:var(--gray-300);outline:none;-webkit-appearance:none;appearance:none}
+.input-group input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--gradient);cursor:pointer;box-shadow:0 2px 8px rgba(177,63,255,.35);transition:all var(--transition)}
+.input-group input[type="range"]::-webkit-slider-thumb:hover{transform:scale(1.15);box-shadow:0 3px 14px rgba(177,63,255,.5)}
+.input-group input[type="range"]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--gradient);cursor:pointer;border:none;box-shadow:0 2px 8px rgba(177,63,255,.35)}
+.input-group input[type="number"]{width:100%;padding:14px 16px;border:2px solid var(--gray-300);border-radius:var(--radius);font-family:var(--font);font-size:1rem;font-weight:600;color:var(--gray-900);transition:border-color var(--transition)}
+.input-group input[type="number"]:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 3px rgba(177,63,255,.12)}
+.info-row{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--purple-bg);border-radius:var(--radius);border:1px solid rgba(147,51,234,.12)}
+.info-row span:first-child{font-weight:600;color:var(--gray-700);font-size:.95rem}
+.info-row span:last-child{font-weight:800;color:var(--purple)}
 
-/* ===== RESPONSIVE ===== */
+.calc-results{display:flex;flex-direction:column;gap:16px}
+.result-card{padding:20px;border-radius:var(--radius);border:1px solid var(--gray-300);background:var(--white);transition:all var(--transition)}
+.result-card-label{font-size:.8rem;font-weight:700;color:var(--gray-500);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.result-card-value{font-size:1.6rem;font-weight:800;color:var(--gray-900)}
+.result-card.highlight{background:linear-gradient(135deg,var(--green),var(--green-dark));border-color:transparent;box-shadow:0 4px 20px rgba(34,197,94,.3)}
+.result-card.highlight .result-card-label{color:rgba(255,255,255,.8)}
+.result-card.highlight .result-card-value{color:var(--white);font-size:2rem}
+.result-card.accent{background:var(--purple-bg);border-color:rgba(147,51,234,.15)}
+.result-card.accent .result-card-value{color:var(--purple)}
+.result-card.warn{background:#fef3c7;border-color:rgba(245,158,11,.3)}
+.result-card.warn .result-card-value{color:#b45309}
+
+.chart-container{margin-top:20px;padding:24px;background:var(--gray-100);border-radius:var(--radius)}
+.chart-title{font-size:.85rem;font-weight:700;color:var(--gray-500);text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px}
+.chart-bars{display:flex;flex-direction:column;gap:12px}
+.chart-bar-group{display:flex;align-items:center;gap:12px}
+.chart-bar-label{font-size:.85rem;font-weight:600;color:var(--gray-700);width:100px;flex-shrink:0;text-align:right}
+.chart-bar-track{flex:1;height:36px;background:var(--gray-300);border-radius:8px;overflow:hidden;position:relative}
+.chart-bar-fill{height:100%;border-radius:8px;transition:width .6s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding-left:12px;font-size:.8rem;font-weight:700;color:var(--white);min-width:fit-content}
+.chart-bar-fill.combustible{background:linear-gradient(90deg,#ef4444,#dc2626)}
+.chart-bar-fill.electrico{background:var(--gradient)}
+
+.calc-cta{margin-top:24px;padding:24px;background:linear-gradient(135deg,var(--green-bg),var(--purple-bg));border-radius:var(--radius);text-align:center;border:1px solid rgba(147,51,234,.1)}
+.calc-cta p{font-size:1.1rem;font-weight:600;color:var(--gray-700);margin-bottom:16px}
+.calc-cta strong{color:var(--green)}
+
+/* FINANCE */
+.finance-section{background:var(--white)}
+.finance-flow{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:40px}
+.finance-step{background:var(--white);border:2px solid var(--gray-300);border-radius:var(--radius);padding:24px 28px;text-align:center;min-width:180px;transition:all var(--transition)}
+.finance-step:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.finance-step .fs-icon{font-size:1.8rem;margin-bottom:8px}
+.finance-step .fs-label{font-size:.8rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.finance-step .fs-value{font-size:1.4rem;font-weight:800;color:var(--navy)}
+.finance-step.purple-step{background:var(--purple-bg);border-color:rgba(147,51,234,.25)}
+.finance-step.purple-step .fs-value{color:var(--purple)}
+.finance-step.green-step{background:var(--green-bg);border-color:rgba(34,197,94,.25)}
+.finance-step.green-step .fs-value{color:var(--green-dark)}
+.finance-arrow{font-size:1.5rem;color:var(--gray-500);flex-shrink:0}
+.finance-result{margin-top:32px;text-align:center;padding:32px;background:var(--gradient-dark);border-radius:var(--radius-lg);position:relative;overflow:hidden}
+.finance-result::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(177,63,255,.15),transparent 70%);pointer-events:none}
+.finance-result .big-number{font-size:clamp(2.5rem,6vw,3.5rem);font-weight:900;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative}
+.finance-result p{font-size:1.1rem;color:rgba(255,255,255,.7);margin-top:8px;position:relative}
+
+/* COMPARE */
+.compare-section{background:var(--gray-100)}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px}
+.compare-card{border-radius:var(--radius-lg);padding:36px;position:relative;overflow:hidden}
+.compare-card.antes{background:var(--white);border:2px solid var(--gray-300)}
+.compare-card.ahora{background:var(--gradient-dark);color:var(--white);border:1px solid rgba(177,63,255,.2)}
+.compare-card h3{font-size:1.5rem;font-weight:800;margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.compare-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+.compare-list li{display:flex;align-items:flex-start;gap:12px;font-size:1rem;line-height:1.5}
+.compare-list li .ci{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.antes .ci{background:#fef2f2;color:var(--red)}
+.ahora .ci{background:rgba(177,63,255,.2)}
+
+/* BENEFITS */
+.benefits-section{background:var(--white)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:40px}
+.benefit-card{padding:28px;background:var(--gray-100);border-radius:var(--radius);text-align:center;transition:all var(--transition);border:1px solid transparent}
+.benefit-card:hover{background:var(--white);border-color:var(--purple);box-shadow:var(--shadow-purple);transform:translateY(-4px)}
+.benefit-icon{width:56px;height:56px;margin:0 auto 16px;background:var(--purple-bg);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+.benefit-card h4{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.benefit-card p{font-size:.9rem;color:var(--gray-500);line-height:1.5}
+
+/* PROCESS */
+.process-section{background:var(--gradient-dark);color:var(--white);position:relative;overflow:hidden}
+.process-section::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(177,63,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(177,63,255,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:48px;position:relative;z-index:1}
+.process-step{text-align:center;position:relative}
+.step-number{width:52px;height:52px;border-radius:50%;background:var(--gradient);color:var(--white);font-size:1.3rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 4px 16px rgba(177,63,255,.3)}
+.process-step h4{font-size:.95rem;font-weight:700;margin-bottom:8px}
+.process-step p{font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.5}
+.process-guarantee{text-align:center;margin-top:48px;padding:24px 32px;background:rgba(177,63,255,.12);border:1px solid rgba(177,63,255,.25);border-radius:var(--radius);display:inline-flex;align-items:center;gap:12px;font-size:1.1rem;font-weight:700;color:#d8b4fe;position:relative;z-index:1}
+
+/* TESTIMONIALS */
+.testimonials-section{background:var(--gray-100)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.testimonial-card{background:var(--white);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow);position:relative}
+.testimonial-card::before{content:'\201C';position:absolute;top:16px;right:24px;font-size:4rem;font-weight:800;color:var(--purple-bg);line-height:1}
+.testimonial-stars{color:var(--orange);font-size:1rem;margin-bottom:12px;letter-spacing:2px}
+.testimonial-text{font-size:1rem;color:var(--gray-700);line-height:1.6;margin-bottom:20px;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:44px;height:44px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:800;font-size:1rem}
+.testimonial-name{font-weight:700;font-size:.95rem;color:var(--navy)}
+.testimonial-role{font-size:.8rem;color:var(--gray-500)}
+.metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.metric{text-align:center;padding:24px;background:var(--white);border-radius:var(--radius);border:2px solid var(--purple-bg)}
+.metric-value{font-size:2.2rem;font-weight:900;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.metric-label{font-size:.85rem;color:var(--gray-500);margin-top:4px}
+
+/* URGENCY */
+.urgency-section{background:linear-gradient(135deg,#fef3c7,#fffbeb);padding:56px 0}
+.urgency-inner{display:flex;align-items:center;gap:32px}
+.urgency-icon{font-size:3rem;flex-shrink:0}
+.urgency-content h2{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;color:#92400e;margin-bottom:8px}
+.urgency-content p{font-size:1rem;color:#78350f;line-height:1.6}
+.urgency-date{display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:rgba(146,64,14,.1);padding:8px 16px;border-radius:8px;font-weight:700;color:#92400e;font-size:.95rem}
+
+/* FORM */
+.form-section{background:var(--white);padding:80px 0}
+.form-wrapper{max-width:640px;margin:0 auto;background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:48px 40px;border:1px solid rgba(147,51,234,.1)}
+.form-wrapper h2{font-size:1.8rem;font-weight:800;color:var(--navy);margin-bottom:8px;text-align:center}
+.form-wrapper>p{text-align:center;color:var(--gray-500);margin-bottom:32px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-weight:600;font-size:.9rem;color:var(--gray-700);margin-bottom:8px}
+.form-group input,.form-group select{width:100%;padding:14px 16px;border:2px solid var(--gray-300);border-radius:var(--radius);font-family:var(--font);font-size:1rem;color:var(--gray-900);transition:border-color var(--transition);background:var(--white)}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 3px rgba(177,63,255,.1)}
+.form-submit{width:100%;margin-top:8px}
+.form-disclaimer{text-align:center;font-size:.85rem;color:var(--gray-500);margin-top:16px}
+
+/* FINAL CTA */
+.final-cta{background:var(--gradient-dark);padding:80px 0;text-align:center;color:var(--white);position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;bottom:-50%;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(177,63,255,.1),transparent 70%);pointer-events:none}
+.final-cta h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:16px;position:relative}
+.final-cta p{color:rgba(255,255,255,.65);font-size:1.1rem;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto;position:relative}
+
+/* FOOTER */
+.footer{background:var(--navy);color:rgba(255,255,255,.4);padding:32px 0;text-align:center;font-size:.85rem}
+.footer a{color:#d8b4fe}
+.footer strong{color:rgba(255,255,255,.7)}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(15,10,46,.7);backdrop-filter:blur(6px);z-index:9999;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.active{display:flex}
+.modal{background:var(--white);border-radius:var(--radius-lg);padding:40px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:modalIn .35s cubic-bezier(.4,0,.2,1);border:1px solid rgba(147,51,234,.12)}
+@keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:var(--gray-100);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--transition)}
+.modal-close:hover{background:var(--gray-300)}
+.modal h3{font-size:1.4rem;font-weight:800;color:var(--navy);margin-bottom:4px}
+.modal>p{color:var(--gray-500);margin-bottom:24px;font-size:.95rem}
+.modal-savings{background:var(--green-bg);border:1px solid rgba(34,197,94,.2);border-radius:var(--radius);padding:16px;text-align:center;margin-bottom:24px}
+.modal-savings span{font-size:1.5rem;font-weight:800;color:var(--green-dark)}
+.modal-savings small{display:block;font-size:.8rem;color:var(--gray-500);margin-top:4px}
+
+/* WHATSAPP */
+.whatsapp-float{position:fixed;bottom:24px;right:24px;z-index:900;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.4);transition:all var(--transition);cursor:pointer}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(37,211,102,.5)}
+.whatsapp-float svg{width:32px;height:32px;fill:white}
+
+/* RESPONSIVE */
 @media(max-width:900px){
-  .shell{flex-direction:column}
-  .sidebar{width:100%;height:auto;position:relative;top:0;border-right:none;border-bottom:1px solid var(--border-2);display:flex;flex-wrap:wrap;padding:8px;gap:4px}
-  .sidebar-title{display:none}
-  .nav-section{margin:0;padding:0;border:none;display:contents}
-  .nav-item{width:auto;padding:5px 12px;font-size:12px;border-left:none!important;border-radius:var(--radius-md)}
-  .nav-item.active{border-left:none!important;background:var(--accent-light);color:var(--accent)}
-  .overview-grid,.metric-row,.channel-grid,.lp-row{grid-template-columns:1fr}
-  .month-tabs{flex-wrap:wrap}
-  .app-header-inner{flex-direction:column;height:auto;padding:10px 0;gap:8px}
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .hero-bullets{justify-content:center}
+  .hero-buttons{justify-content:center}
+  .hero-visual{margin-top:40px}
+  .calc-grid{grid-template-columns:1fr}
+  .compare-grid{grid-template-columns:1fr}
+  .process-steps{grid-template-columns:repeat(2,1fr)}
+  .testimonials-grid{grid-template-columns:1fr}
+  .metrics-row{grid-template-columns:1fr}
+  .finance-flow{gap:8px}
+  .finance-step{min-width:140px;padding:16px}
+  .finance-arrow{display:none}
+  .urgency-inner{flex-direction:column;text-align:center}
 }
 @media(max-width:600px){
-  .cards-row{grid-template-columns:1fr}
-  .panel{padding:14px 12px}
-  .cal-wrap{padding:14px 12px}
+  .section{padding:56px 0}
+  .hero{padding:100px 0 60px;min-height:auto}
+  .hero-bullets{grid-template-columns:1fr;text-align:left}
+  .hero-buttons{flex-direction:column;align-items:stretch}
+  .calc-header{padding:24px}
+  .calc-body{padding:24px}
+  .hero-dash{padding:24px}
+  .form-wrapper{padding:28px 20px}
+  .modal{padding:28px 20px}
+  .process-steps{grid-template-columns:1fr}
+  .finance-flow{flex-direction:column}
+  .chart-bar-label{width:70px;font-size:.75rem}
+  .btn-large,.btn-cta{padding:16px 28px;font-size:1rem}
 }
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
 
-<header class="app-header">
-  <div class="app-header-inner">
-    <div class="app-logo"><span>Imfluid</span> — Plan de Marketing Digital</div>
-    <nav class="app-nav">
-      <button class="app-nav-btn active" onclick="switchSection('estrategia',this)">Estrategia por Industria</button>
-      <button class="app-nav-btn" onclick="switchSection('calendario',this)">Calendario Editorial Q1</button>
-    </nav>
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <div class="nav-logo"><span>E</span>mobilitex</div>
+    <a href="#formulario" class="btn btn-primary nav-cta">Evaluar mi caso</a>
   </div>
-</header>
+</nav>
 
-<div class="app-body">
+<section class="hero" id="inicio">
+  <div class="hero-grid-bg"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">&#9889; Subsidio PIE disponible 2026</div>
+        <h1>Renueva tu colectivo: <em>el ahorro paga tu auto eléctrico</em></h1>
+        <p class="hero-sub">Con el subsidio estatal y el ahorro en combustible, tu vehículo eléctrico puede costarte menos de lo que gastas hoy.</p>
+        <div class="hero-bullets">
+          <div class="hero-bullet"><span class="icon">&#9989;</span> Subsidio estatal disponible</div>
+          <div class="hero-bullet"><span class="icon">&#128176;</span> Ahorro mensual real</div>
+          <div class="hero-bullet"><span class="icon">&#128295;</span> Menor costo mantención</div>
+          <div class="hero-bullet"><span class="icon">&#128188;</span> Gestión completa</div>
+        </div>
+        <div class="hero-buttons">
+          <a href="#calculadora" class="btn btn-cta">Calcula cuánto puedes ahorrar</a>
+          <a href="#formulario" class="btn btn-secondary" style="background:transparent;border-color:rgba(255,255,255,.5);color:#fff;">Evalúa tu caso gratis</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-dash">
+          <div class="dash-title">&#9889; Tu modelo financiero</div>
+          <div class="dash-flow">
+            <div class="dash-row">
+              <div class="dash-icon car">&#128663;</div>
+              <div class="dash-info"><div class="dash-label">Vehículo eléctrico</div><div class="dash-val dim">$24.000.000</div></div>
+            </div>
+            <div class="dash-connector"></div>
+            <div class="dash-row">
+              <div class="dash-icon sub">&#127981;</div>
+              <div class="dash-info"><div class="dash-label">Subsidio PIE (el Estado paga)</div><div class="dash-val purple">-$9.700.000</div></div>
+            </div>
+            <div class="dash-connector"></div>
+            <div class="dash-row">
+              <div class="dash-icon cuota">&#128179;</div>
+              <div class="dash-info"><div class="dash-label">Cuota mensual (48 meses)</div><div class="dash-val dim">$410.000/mes</div></div>
+            </div>
+            <div class="dash-connector"></div>
+            <div class="dash-row">
+              <div class="dash-icon ahorro">&#128176;</div>
+              <div class="dash-info"><div class="dash-label">Tu ahorro en combustible</div><div class="dash-val green">-$350.000/mes</div></div>
+            </div>
+          </div>
+          <div class="dash-result">
+            <div class="dash-result-label">Pagas realmente</div>
+            <div class="dash-result-val">~$60.000/mes</div>
+            <div class="dash-result-sub">El ahorro paga el 85% de tu cuota</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- ==================== ESTRATEGIA ==================== -->
-<div id="sec-estrategia" class="section-wrap active">
-<div class="shell">
-<div class="sidebar">
-  <div class="sidebar-title">Industrias</div>
-  <button class="nav-item active" onclick="showPanel('overview')">Vista general</button>
-  <button class="nav-item" onclick="showPanel('gases-aire')">Gases del aire</button>
-  <button class="nav-item" onclick="showPanel('gases-comb')">Gases combustible</button>
-  <button class="nav-item" onclick="showPanel('agro')">Agroindustria</button>
-  <button class="nav-item" onclick="showPanel('pesqueras')">Pesqueras</button>
-  <button class="nav-item" onclick="showPanel('mineria')">Minería</button>
-  <button class="nav-item" onclick="showPanel('alimentos')">Alimentos</button>
-  <button class="nav-item" onclick="showPanel('fundicion')">Fundición</button>
-  <button class="nav-item" onclick="showPanel('quimica')">Química</button>
-  <button class="nav-item" onclick="showPanel('papeleras')">Papeleras</button>
-  <div class="nav-section">
-    <div class="sidebar-title">Estrategia</div>
-    <button class="nav-item" onclick="showPanel('transversal')">Iniciativas transversales</button>
-    <button class="nav-item" onclick="showPanel('web')">Análisis sitio web</button>
+<section class="calc-section section" id="calculadora">
+  <div class="container">
+    <div class="calc-wrapper fade-up">
+      <div class="calc-header">
+        <h2>&#128200; Calculadora de Ahorro</h2>
+        <p>Ajusta los valores según tu operación diaria y mira cuánto puedes ahorrar al mes</p>
+      </div>
+      <div class="calc-body">
+        <div class="calc-grid">
+          <div class="calc-inputs">
+            <div class="input-group"><label>Kilómetros por día <span class="value-display" id="km-val">120 km</span></label><input type="range" id="km-dia" min="20" max="300" value="120" step="5"></div>
+            <div class="input-group"><label>Días trabajados al mes <span class="value-display" id="dias-val">26 días</span></label><input type="range" id="dias-mes" min="10" max="30" value="26"></div>
+            <div class="input-group"><label>Rendimiento actual (km/litro) <span class="value-display" id="rend-val">12 km/lt</span></label><input type="range" id="rendimiento" min="8" max="20" value="12" step="0.5"></div>
+            <div class="input-group"><label>Precio combustible (CLP/litro)</label><input type="number" id="precio-combustible" value="1300" min="800" max="2500" step="10"></div>
+            <div class="info-row"><span>&#9889; Costo electricidad por km</span><span>$40 CLP (fijo)</span></div>
+          </div>
+          <div class="calc-results" id="calc-results">
+            <div class="result-card"><div class="result-card-label">&#9981;&#65039; Tu gasto actual en combustible</div><div class="result-card-value" id="res-gasto-combustible">$0</div></div>
+            <div class="result-card accent"><div class="result-card-label">&#9889; Costo estimado con eléctrico</div><div class="result-card-value" id="res-gasto-electrico">$0</div></div>
+            <div class="result-card highlight"><div class="result-card-label">&#128184; Tu ahorro mensual estimado</div><div class="result-card-value" id="res-ahorro">$0</div></div>
+            <div class="result-card accent"><div class="result-card-label">&#128202; El ahorro paga</div><div class="result-card-value" id="res-porcentaje">0% de la cuota</div></div>
+            <div class="result-card warn"><div class="result-card-label">&#128181; Pago real estimado del auto</div><div class="result-card-value" id="res-pago-real">$0 / mes</div></div>
+            <div class="chart-container">
+              <div class="chart-title">Comparación mensual de costos</div>
+              <div class="chart-bars">
+                <div class="chart-bar-group"><span class="chart-bar-label">Combustible</span><div class="chart-bar-track"><div class="chart-bar-fill combustible" id="bar-combustible" style="width:0%"></div></div></div>
+                <div class="chart-bar-group"><span class="chart-bar-label">Eléctrico</span><div class="chart-bar-track"><div class="chart-bar-fill electrico" id="bar-electrico" style="width:0%"></div></div></div>
+              </div>
+            </div>
+            <div class="calc-cta">
+              <p>Según tus datos, podrías ahorrar aprox. <strong id="cta-ahorro">$0</strong> al mes.</p>
+              <button class="btn btn-cta" onclick="openModal()">Quiero evaluar mi caso gratis</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="finance-section section" id="modelo">
+  <div class="container" style="text-align:center">
+    <div class="badge" style="margin-bottom:16px">Modelo financiero</div>
+    <h2 class="section-title" style="margin-left:auto;margin-right:auto">El ahorro paga tu vehículo</h2>
+    <p class="section-subtitle" style="margin-left:auto;margin-right:auto">El subsidio baja el precio y el ahorro en combustible cubre la mayor parte de la cuota.</p>
+    <div class="finance-flow fade-up">
+      <div class="finance-step"><div class="fs-icon">&#128663;</div><div class="fs-label">Vehículo eléctrico</div><div class="fs-value">$24.000.000</div></div>
+      <span class="finance-arrow">&#10132;</span>
+      <div class="finance-step purple-step"><div class="fs-icon">&#127981;</div><div class="fs-label">Subsidio PIE</div><div class="fs-value">-$9.700.000</div></div>
+      <span class="finance-arrow">&#10132;</span>
+      <div class="finance-step"><div class="fs-icon">&#128179;</div><div class="fs-label">Cuota mensual</div><div class="fs-value">$410.000</div></div>
+      <span class="finance-arrow">&#10132;</span>
+      <div class="finance-step green-step"><div class="fs-icon">&#128176;</div><div class="fs-label">Ahorro combustible</div><div class="fs-value">-$350.000</div></div>
+    </div>
+    <div class="finance-result fade-up">
+      <div class="big-number">~$60.000/mes</div>
+      <p>Es lo que realmente pagarías por tu nuevo vehículo eléctrico</p>
+    </div>
+  </div>
+</section>
+
+<section class="compare-section section">
+  <div class="container" style="text-align:center">
+    <div class="badge" style="margin-bottom:16px">Comparación</div>
+    <h2 class="section-title" style="margin-left:auto;margin-right:auto">Antes vs. Ahora</h2>
+    <div class="compare-grid fade-up">
+      <div class="compare-card antes">
+        <h3>&#128308; ANTES</h3>
+        <ul class="compare-list">
+          <li><span class="ci">&#128696;</span> Gastas en combustible todos los días — hasta $22.000 diarios en diésel</li>
+          <li><span class="ci">&#128295;</span> Mantenciones caras: motor de 2.000 piezas, aceite, filtros, correas</li>
+          <li><span class="ci">&#128200;</span> Ingresos variables con costos operacionales altos e impredecibles</li>
+          <li><span class="ci">&#128683;</span> Restricción vehicular y contaminación</li>
+        </ul>
+      </div>
+      <div class="compare-card ahora">
+        <h3>&#128994; AHORA</h3>
+        <ul class="compare-list">
+          <li><span class="ci">&#128176;</span> Ahorras hasta $350.000 al mes en combustible vs energía eléctrica</li>
+          <li><span class="ci">&#128295;</span> Motor de solo 20 piezas: mantenimiento mínimo y más barato</li>
+          <li><span class="ci">&#128202;</span> Mayor estabilidad financiera con costos predecibles y bajos</li>
+          <li><span class="ci">&#9989;</span> Sin restricción vehicular y cero emisiones</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits-section section">
+  <div class="container" style="text-align:center">
+    <div class="badge" style="margin-bottom:16px">Beneficios</div>
+    <h2 class="section-title" style="margin-left:auto;margin-right:auto">Ventajas del vehículo eléctrico</h2>
+    <div class="benefits-grid fade-up">
+      <div class="benefit-card"><div class="benefit-icon">&#9889;</div><h4>Hasta 80% menos costo en energía</h4><p>Cargar electricidad cuesta una fracción de lo que gastas en diésel o bencina.</p></div>
+      <div class="benefit-card"><div class="benefit-icon">&#128295;</div><h4>Menos piezas mecánicas</h4><p>De 2.000 piezas a solo 20. Olvídate de cambios de aceite, correas y filtros.</p></div>
+      <div class="benefit-card"><div class="benefit-icon">&#128663;</div><h4>Sin restricción vehicular</h4><p>Los vehículos eléctricos no tienen restricción, trabajas todos los días del año.</p></div>
+      <div class="benefit-card"><div class="benefit-icon">&#127795;</div><h4>Menor contaminación</h4><p>Cero emisiones directas. Contribuyes a un transporte más limpio para Chile.</p></div>
+      <div class="benefit-card"><div class="benefit-icon">&#128179;</div><h4>Menor costo de mantención</h4><p>Hasta 60% menos en mantenciones anuales comparado con combustión.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="process-section section" id="proceso">
+  <div class="container" style="text-align:center">
+    <div class="badge" style="background:rgba(177,63,255,.15);color:#d8b4fe;margin-bottom:16px">Proceso</div>
+    <h2 class="section-title" style="color:#fff;margin-left:auto;margin-right:auto">Nosotros hacemos todo el proceso</h2>
+    <p class="section-subtitle" style="color:rgba(255,255,255,.55);margin-left:auto;margin-right:auto">Solo te preocupas de conducir. Nosotros nos encargamos del resto.</p>
+    <div class="process-steps fade-up">
+      <div class="process-step"><div class="step-number">1</div><h4>Evaluamos tu caso</h4><p>Analizamos tu operación, recorrido y presupuesto.</p></div>
+      <div class="process-step"><div class="step-number">2</div><h4>Postulamos al subsidio</h4><p>Gestionamos tu postulación al programa RTC (PIE).</p></div>
+      <div class="process-step"><div class="step-number">3</div><h4>Seleccionamos el vehículo</h4><p>Te ayudamos a elegir el auto ideal según tu recorrido.</p></div>
+      <div class="process-step"><div class="step-number">4</div><h4>Gestionamos financiamiento</h4><p>Mejores opciones de crédito compatibles con tu ahorro.</p></div>
+      <div class="process-step"><div class="step-number">5</div><h4>Implementación</h4><p>GPS, pintura normativa y gestión MTT. Listo para trabajar.</p></div>
+    </div>
+    <div style="text-align:center;margin-top:48px"><div class="process-guarantee">&#128170; Solo pagas si obtienes el beneficio</div></div>
+  </div>
+</section>
+
+<section class="testimonials-section section">
+  <div class="container" style="text-align:center">
+    <div class="badge" style="margin-bottom:16px">Testimonios</div>
+    <h2 class="section-title" style="margin-left:auto;margin-right:auto">Lo que dicen los colectiveros</h2>
+    <div class="testimonials-grid fade-up">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+        <p class="testimonial-text">Pasé de gastar $400.000 en combustible a menos de $60.000 reales al mes. No lo podía creer hasta que vi los números.</p>
+        <div class="testimonial-author"><div class="testimonial-avatar">RM</div><div><div class="testimonial-name">Roberto M.</div><div class="testimonial-role">Colectivero, Temuco</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+        <p class="testimonial-text">El proceso fue más fácil de lo que pensaba. EMobilitex se encargó de todo: subsidio, financiamiento, hasta la pintura.</p>
+        <div class="testimonial-author"><div class="testimonial-avatar">JP</div><div><div class="testimonial-name">Juan Pablo S.</div><div class="testimonial-role">Operador de flota, Santiago</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+        <p class="testimonial-text">Mis compañeros no me creían. Ahora tres más de la línea están postulando al subsidio. El ahorro es real.</p>
+        <div class="testimonial-author"><div class="testimonial-avatar">CA</div><div><div class="testimonial-name">Carlos A.</div><div class="testimonial-role">Colectivero, Araucanía</div></div></div>
+      </div>
+    </div>
+    <div class="metrics-row fade-up">
+      <div class="metric"><div class="metric-value">8+</div><div class="metric-label">Buses eléctricos entregados</div></div>
+      <div class="metric"><div class="metric-value">15+</div><div class="metric-label">Flotas asesoradas</div></div>
+      <div class="metric"><div class="metric-value">$350K</div><div class="metric-label">Ahorro promedio/mes</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="urgency-section">
+  <div class="container">
+    <div class="urgency-inner fade-up">
+      <div class="urgency-icon">&#9888;&#65039;</div>
+      <div class="urgency-content">
+        <h2>Los cupos del subsidio PIE son limitados cada año</h2>
+        <p>Las postulaciones al programa Renueva tu Colectivo 2026 se abren en mayo. Los cupos se agotan rápido. Mientras antes evalúes tu caso, más posibilidades tienes.</p>
+        <div class="urgency-date">&#128197; Postulaciones RTC 2026: desde el 18 de mayo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="form-section" id="formulario">
+  <div class="container">
+    <div class="form-wrapper fade-up">
+      <h2>Evalúa tu caso gratis</h2>
+      <p>Déjanos tus datos y te contactaremos para calcular tu ahorro real.</p>
+      <form id="lead-form" onsubmit="handleFormSubmit(event)">
+        <div class="form-group"><label for="f-nombre">Nombre completo</label><input type="text" id="f-nombre" name="nombre" placeholder="Ej: Juan Pérez" required></div>
+        <div class="form-group"><label for="f-telefono">Teléfono</label><input type="tel" id="f-telefono" name="telefono" placeholder="+56 9 1234 5678" required></div>
+        <div class="form-group"><label for="f-ciudad">Ciudad</label><input type="text" id="f-ciudad" name="ciudad" placeholder="Ej: Santiago, Temuco, Valparaíso"></div>
+        <div class="form-group"><label for="f-tipo">¿Tienes colectivo o flota?</label>
+          <select id="f-tipo" name="tipo"><option value="">Selecciona una opción</option><option value="colectivo_propio">Colectivo propio (1 vehículo)</option><option value="flota_pequena">Flota pequeña (2-5 vehículos)</option><option value="flota_grande">Flota grande (6+ vehículos)</option><option value="taxi">Taxi individual</option><option value="interesado">Aún no tengo, pero me interesa</option></select>
+        </div>
+        <input type="hidden" id="f-km-diarios" name="km_diarios"><input type="hidden" id="f-gasto-estimado" name="gasto_estimado"><input type="hidden" id="f-ahorro-calculado" name="ahorro_calculado">
+        <button type="submit" class="btn btn-cta form-submit">Quiero evaluar mi ahorro</button>
+        <p class="form-disclaimer">&#128274; Te contactaremos para calcular tu ahorro real. Sin compromiso.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container">
+    <h2>Descubre cuánto podrías ahorrar cada mes</h2>
+    <p>El primer paso es conocer tus números. Usa nuestra calculadora y evalúa si el cambio a eléctrico es para ti.</p>
+    <a href="#calculadora" class="btn btn-cta btn-large" style="position:relative">Calcular mi ahorro ahora</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p><strong>EMobilitex</strong> by Mobilitex &mdash; Impulsando la Electromovilidad Sostenible en Chile</p>
+    <p style="margin-top:8px">Contacto: <a href="mailto:cmaturana@mobilitex.cl">cmaturana@mobilitex.cl</a> | <a href="tel:+56983046729">+569 8304 6729</a> | <a href="https://www.emobilitex.cl" target="_blank">www.emobilitex.cl</a></p>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h3>Evalúa tu caso gratis</h3>
+    <p>Con tus datos de uso, te preparamos un análisis personalizado.</p>
+    <div class="modal-savings"><span id="modal-ahorro-val">$0</span><small>Tu ahorro mensual estimado</small></div>
+    <form id="modal-form" onsubmit="handleModalSubmit(event)">
+      <div class="form-group"><label for="m-nombre">Nombre</label><input type="text" id="m-nombre" name="nombre" placeholder="Tu nombre" required></div>
+      <div class="form-group"><label for="m-telefono">Teléfono</label><input type="tel" id="m-telefono" name="telefono" placeholder="+56 9 1234 5678" required></div>
+      <div class="form-group"><label for="m-ciudad">Ciudad</label><input type="text" id="m-ciudad" name="ciudad" placeholder="Tu ciudad"></div>
+      <div class="form-group"><label for="m-tipo">¿Tienes colectivo o flota?</label>
+        <select id="m-tipo" name="tipo"><option value="">Selecciona</option><option value="colectivo_propio">Colectivo propio</option><option value="flota_pequena">Flota pequeña (2-5)</option><option value="flota_grande">Flota grande (6+)</option><option value="taxi">Taxi individual</option><option value="interesado">Aún no tengo</option></select>
+      </div>
+      <input type="hidden" id="m-km-diarios" name="km_diarios"><input type="hidden" id="m-gasto-estimado" name="gasto_estimado"><input type="hidden" id="m-ahorro-calculado" name="ahorro_calculado">
+      <button type="submit" class="btn btn-cta" style="width:100%">Quiero evaluar mi ahorro</button>
+      <p class="form-disclaimer">&#128274; Sin compromiso. Te contactamos en menos de 24 hrs.</p>
+    </form>
   </div>
 </div>
 
-<div class="main">
-
-<!-- OVERVIEW -->
-<div id="panel-overview" class="panel active">
-  <div class="panel-header">
-    <div class="panel-title">Plan de marketing digital — Imfluid</div>
-    <div class="panel-sub">Estrategia B2B para 9 industrias · 4 líneas de producto · Mercado latinoamericano</div>
-  </div>
-  <div class="metric-row">
-    <div class="metric"><div class="metric-label">Industrias objetivo</div><div class="metric-val">9</div></div>
-    <div class="metric"><div class="metric-label">Líneas de producto</div><div class="metric-val">4</div></div>
-    <div class="metric"><div class="metric-label">Canales prioritarios</div><div class="metric-val">5</div></div>
-  </div>
-  <div class="section-label">Acceso rápido por industria</div>
-  <div class="overview-grid">
-    <div class="ov-card" onclick="showPanel('gases-aire')">
-      <div class="ov-card-title">Gases del aire</div>
-      <div class="ov-card-desc">CRYO + Control & Automatización</div>
-      <div style="margin-top:6px"><span class="badge b-teal">Alta prioridad</span></div>
-    </div>
-    <div class="ov-card" onclick="showPanel('gases-comb')">
-      <div class="ov-card-title">Gases combustible</div>
-      <div class="ov-card-desc">GN/GLP + Combustión (core business)</div>
-      <div style="margin-top:6px"><span class="badge b-teal">Alta prioridad</span></div>
-    </div>
-    <div class="ov-card" onclick="showPanel('agro')">
-      <div class="ov-card-title">Agroindustria</div>
-      <div class="ov-card-desc">Combustión + GN/GLP para secadores y calderas</div>
-      <div style="margin-top:6px"><span class="badge b-green">Media-alta</span></div>
-    </div>
-    <div class="ov-card" onclick="showPanel('pesqueras')">
-      <div class="ov-card-title">Pesqueras</div>
-      <div class="ov-card-desc">Criogenia + Combustión (cocción/congelación)</div>
-      <div style="margin-top:6px"><span class="badge b-green">Media-alta</span></div>
-    </div>
-    <div class="ov-card" onclick="showPanel('mineria')">
-      <div class="ov-card-title">Minería</div>
-      <div class="ov-card-desc">Control & Automatización + GN/GLP</div>
-      <div style="margin-top:6px"><span class="badge b-teal">Alta prioridad</span></div>
-    </div>
-    <div class="ov-card" onclick="showPanel('alimentos')">
-      <div class="ov-card-title">Alimentos</div>
-      <div class="ov-card-desc">Criogenia IQF + Combustión + Control</div>
-      <div style="margin-top:6px"><span class="badge b-green">Media-alta</span></div>
-    </div>
-    <div class="ov-card" onclick="showPanel('fundicion')">
-      <div class="ov-card-title">Fundición</div>
-      <div class="ov-card-desc">Combustión de alta temperatura + Control</div>
-      <div style="margin-top:6px"><span class="badge b-amber">Media</span></div>
-    </div>
-    <div class="ov-card" onclick="showPanel('quimica')">
-      <div class="ov-card-title">Química</div>
-      <div class="ov-card-desc">CRYO + Control & Automatización</div>
-      <div style="margin-top:6px"><span class="badge b-amber">Media</span></div>
-    </div>
-    <div class="ov-card" onclick="showPanel('papeleras')">
-      <div class="ov-card-title">Papeleras</div>
-      <div class="ov-card-desc">Combustión + GN/GLP para calderas</div>
-      <div style="margin-top:6px"><span class="badge b-amber">Media</span></div>
-    </div>
-  </div>
-  <div class="insight">Haz clic en cualquier industria del menú lateral o en las tarjetas para ver el plan detallado (productos, estrategia digital y estructura de landing page).</div>
-</div>
-
-<!-- GASES DEL AIRE -->
-<div id="panel-gases-aire" class="panel">
-  <div class="panel-header">
-    <div class="panel-title">Gases del aire</div>
-    <div class="panel-sub">Linde, Air Liquide, Air Products, Indura y sus operadores/contratistas</div>
-  </div>
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab(this,'ga')">Productos</button>
-    <button class="tab" onclick="switchTab(this,'ga')">Estrategia digital</button>
-    <button class="tab" onclick="switchTab(this,'ga')">Landing page</button>
-  </div>
-  <div class="tab-content active">
-    <div class="section-label">Líneas recomendadas</div>
-    <div class="card"><div class="card-title">CRYO — Prioridad 1</div><span class="badge b-teal">Válvulas criogénicas</span><span class="badge b-teal">Reguladores</span><span class="badge b-teal">Sistemas detección fugas</span><span class="badge b-teal">Flexibles criogénicos</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Las plantas de separación de aire (ASU) operan con N₂, O₂ y Ar a temperaturas criogénicas (-196°C). La confiabilidad de válvulas y reguladores es crítica para uptime y seguridad.</p></div>
-    <div class="card"><div class="card-title">Control & Automatización — Prioridad 2</div><span class="badge b-blue">Transmisores presión/temperatura</span><span class="badge b-blue">Válvulas de control</span><span class="badge b-blue">Actuadores neumáticos</span><span class="badge b-blue">Controladores UDC</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">El control de procesos en ASUs requiere instrumentación de alta precisión para manejo de flujos, presiones y temperaturas en columnas de destilación.</p></div>
-    <div class="card"><div class="card-title">GN/GLP — Complementario</div><span class="badge b-gray">Sistemas de detección</span><span class="badge b-gray">Medidores</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Detección de fugas en redes internas de distribución de gases producidos.</p></div>
-    <div class="section-label">Pain points del sector</div>
-    <div class="pain">Downtime no planificado = pérdidas millonarias en producción de gases</div>
-    <div class="pain">Certificaciones criogénicas exigentes (ASTM, EN, ISO)</div>
-    <div class="pain">Dificultad para encontrar repuestos certificados en LATAM</div>
-  </div>
-  <div class="tab-content">
-    <div class="channel-grid">
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>LinkedIn Ads</div><p style="font-size:12px;color:#5c5c58">Segmentación: ingenieros de proceso, jefes de planta en empresas de gases industriales. Contenido técnico en PDF y videos de instalación.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>SEO técnico</div><p style="font-size:12px;color:#5c5c58">Keywords: "válvulas criogénicas Chile", "reguladores nitrógeno líquido", "componentes ASU LATAM". Blog técnico con guías de especificación.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-med"></span>Google Ads (Search)</div><p style="font-size:12px;color:#5c5c58">Campañas de intención alta: búsquedas de reemplazo de componentes, certificaciones, especificaciones técnicas.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-med"></span>Email marketing</div><p style="font-size:12px;color:#5c5c58">Newsletter técnico bimensual a base de contactos del sector. Foco en nuevas homologaciones y casos de éxito.</p></div>
-    </div>
-    <div class="section-label">Mensajes clave</div>
-    <div class="insight">«Componentes criogénicos certificados con disponibilidad local en Chile — sin tiempos de espera de importación»</div>
-    <div class="insight">«Soporte técnico especializado para ASUs: Imfluid conoce las exigencias de las plantas de separación de aire»</div>
-    <div class="section-label">Tipo de contenido</div>
-    <ul class="pl"><li>Fichas técnicas descargables por producto (PDF gated)</li><li>Webinar: «Optimización de válvulas criogénicas en ASUs»</li><li>Caso de estudio: reducción de fugas con detección automatizada</li><li>Guía de especificación: cómo seleccionar válvulas para N₂ líquido</li></ul>
-  </div>
-  <div class="tab-content">
-    <div class="card"><div class="card-title">Titular principal</div><p style="font-size:13px;color:#5c5c58">«Soluciones criogénicas certificadas para plantas de separación de aire — disponibilidad inmediata en Chile»</p></div>
-    <div class="lp-row">
-      <div class="lp-block"><div class="lp-block-title">Hero section</div>Problema + solución + CTA "Solicita cotización técnica". Imagen de válvula criogénica en contexto de planta.</div>
-      <div class="lp-block"><div class="lp-block-title">Pain points</div>3 íconos: downtime, certificaciones, tiempos de entrega. Imfluid como solución a cada uno.</div>
-      <div class="lp-block"><div class="lp-block-title">Catálogo</div>Tarjetas de producto CRYO con ficha técnica descargable. Filtros por fluido (N₂, O₂, Ar).</div>
-      <div class="lp-block"><div class="lp-block-title">Certificaciones</div>Logos de normas (ASTM, EN 1626, ISO 21011) + tabla comparativa.</div>
-      <div class="lp-block"><div class="lp-block-title">Social proof</div>Casos de clientes del sector + tiempo de respuesta promedio.</div>
-      <div class="lp-block"><div class="lp-block-title">CTA final</div>Formulario corto (nombre, empresa, fluido, presión operación) + WhatsApp directo a especialista CRYO.</div>
-    </div>
-  </div>
-</div>
-
-<!-- GASES COMBUSTIBLE -->
-<div id="panel-gases-comb" class="panel">
-  <div class="panel-header">
-    <div class="panel-title">Gases combustible</div>
-    <div class="panel-sub">Distribuidoras GN/GLP, operadores de redes, plantas de procesamiento de gas</div>
-  </div>
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab(this,'gc')">Productos</button>
-    <button class="tab" onclick="switchTab(this,'gc')">Estrategia digital</button>
-    <button class="tab" onclick="switchTab(this,'gc')">Landing page</button>
-  </div>
-  <div class="tab-content active">
-    <div class="section-label">Líneas recomendadas (core business)</div>
-    <div class="card"><div class="card-title">GN/GLP — Prioridad 1 (portafolio completo)</div><span class="badge b-teal">Reguladores</span><span class="badge b-teal">Válvulas</span><span class="badge b-teal">Medidores</span><span class="badge b-teal">Cromatografía GN</span><span class="badge b-teal">Vaporizadores GLP</span><span class="badge b-teal">Detección de gases</span><span class="badge b-teal">Bombas GLP</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Esta es la industria natural de Imfluid. El portafolio completo GN/GLP es directamente aplicable a distribuidoras, operadores de redes de distribución y plantas de procesamiento.</p></div>
-    <div class="card"><div class="card-title">Combustión — Prioridad 2</div><span class="badge b-blue">Rampas de gas</span><span class="badge b-blue">Controles de combustión</span><span class="badge b-blue">Quemadores</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Para instalaciones de quemado en plantas de procesamiento y estaciones de distribución con calderas o calentadores.</p></div>
-    <div class="section-label">Pain points del sector</div>
-    <div class="pain">Cumplimiento normativo SEC (Chile) — multas y paralizaciones</div>
-    <div class="pain">Detección de fugas: riesgo de accidentes y pérdidas de producto</div>
-    <div class="pain">Eficiencia en medición para facturación exacta</div>
-  </div>
-  <div class="tab-content">
-    <div class="channel-grid">
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>Google Ads (Search)</div><p style="font-size:12px;color:#5c5c58">Máxima prioridad. Keywords: "reguladores gas natural Chile", "medidores GLP", "detección fugas gas", "vaporizadores GLP". Alta intención de compra.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>SEO local + técnico</div><p style="font-size:12px;color:#5c5c58">Posicionar en búsquedas de especificación técnica. Contenido sobre normativa SEC y certificaciones ANCE.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-med"></span>LinkedIn</div><p style="font-size:12px;color:#5c5c58">Alcanzar gerentes técnicos y de operaciones en distribuidoras de gas (Lipigas, Abastible, Metrogas, etc.).</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-med"></span>Email + WhatsApp</div><p style="font-size:12px;color:#5c5c58">Secuencias automatizadas post-formulario. WhatsApp Business para cotizaciones urgentes.</p></div>
-    </div>
-    <div class="section-label">Mensajes clave</div>
-    <div class="insight">«El proveedor especialista en GN/GLP que los ingenieros de gas confían para cumplir con la SEC»</div>
-    <div class="insight">«Catálogo completo para redes de distribución: desde reguladores hasta cromatógrafos, con soporte técnico local»</div>
-  </div>
-  <div class="tab-content">
-    <div class="card"><div class="card-title">Titular principal</div><p style="font-size:13px;color:#5c5c58">«Todo lo que necesitas para tu red de gas natural y GLP — en un solo proveedor certificado»</p></div>
-    <div class="lp-row">
-      <div class="lp-block"><div class="lp-block-title">Hero</div>Imagen de red de distribución de gas. CTA: "Catálogo técnico completo" + "Solicita asesoría".</div>
-      <div class="lp-block"><div class="lp-block-title">Normativa</div>Sección destacada: cumplimiento SEC, certificaciones de productos, guía de especificación normativa.</div>
-      <div class="lp-block"><div class="lp-block-title">Catálogo</div>Navegación por tipo: regulación, medición, detección, almacenamiento GLP. Fichas descargables.</div>
-      <div class="lp-block"><div class="lp-block-title">Calculadora</div>Herramienta interactiva: "Dimensiona tu sistema de regulación" (caudal, presión entrada/salida).</div>
-      <div class="lp-block"><div class="lp-block-title">Clientes</div>Logos de distribuidoras + testimonios de jefes de proyecto.</div>
-      <div class="lp-block"><div class="lp-block-title">CTA</div>Formulario + chat WhatsApp 24h para urgencias técnicas.</div>
-    </div>
-  </div>
-</div>
-
-<!-- AGROINDUSTRIA -->
-<div id="panel-agro" class="panel">
-  <div class="panel-header">
-    <div class="panel-title">Agroindustria</div>
-    <div class="panel-sub">Secadores de granos, procesadoras de frutas, plantas frigoríficas agrícolas</div>
-  </div>
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab(this,'ag')">Productos</button>
-    <button class="tab" onclick="switchTab(this,'ag')">Estrategia digital</button>
-    <button class="tab" onclick="switchTab(this,'ag')">Landing page</button>
-  </div>
-  <div class="tab-content active">
-    <div class="card"><div class="card-title">Combustión — Prioridad 1</div><span class="badge b-teal">Quemadores para secadores</span><span class="badge b-teal">Sistemas eficiencia energética</span><span class="badge b-teal">Controles de combustión</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Secadores de trigo, maíz, soja y fruta requieren quemadores eficientes y controlables. La temperatura es crítica para calidad del producto. Enorme potencial de ahorro energético.</p></div>
-    <div class="card"><div class="card-title">GN/GLP — Prioridad 2</div><span class="badge b-blue">Reguladores GLP/GN</span><span class="badge b-blue">Vaporizadores GLP</span><span class="badge b-blue">Rampas de gas</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Alimentación de combustible a quemadores y calderas. La agroindustria en zonas rurales frecuentemente usa GLP.</p></div>
-    <div class="card"><div class="card-title">Control & Automatización — Complementario</div><span class="badge b-gray">Transmisores temperatura</span><span class="badge b-gray">Controladores UDC</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Control de temperatura de proceso en secado, pasteurización y cámaras de frío.</p></div>
-    <div class="pain">Costos de combustible representan 30-40% del costo de operación en secado</div>
-    <div class="pain">Temperatura de secado descontrolada = pérdidas de calidad y rechazo del producto</div>
-    <div class="pain">Paros en temporada alta = pérdidas millonarias (cosecha con ventana estrecha)</div>
-  </div>
-  <div class="tab-content">
-    <div class="channel-grid">
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>Google Ads</div><p style="font-size:12px;color:#5c5c58">Keywords de alta intención: "quemadores secadores de grano", "eficiencia energética secado agrícola", "sistema combustión GLP campo".</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>Contenido SEO</div><p style="font-size:12px;color:#5c5c58">Artículos: "Cómo reducir consumo de GLP en secadores de grano", "ROI de modernizar tu sistema de combustión".</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-med"></span>Ferias sectoriales</div><p style="font-size:12px;color:#5c5c58">Expoagro, Agrishow. Captura de leads con tablet + demo en vivo. Retargeting post-feria con LinkedIn y Google.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-low"></span>YouTube técnico</div><p style="font-size:12px;color:#5c5c58">Videos cortos: instalación de quemador, comparativa antes/después de eficiencia, testimoniales de agricultores.</p></div>
-    </div>
-    <div class="insight">«¿Estás pagando de más por combustible en tu secador? Calcula tu ahorro potencial con combustión Imfluid»</div>
-    <div class="insight">«Maximiza tu temporada de cosecha: sistemas de combustión que no fallan cuando más los necesitas»</div>
-  </div>
-  <div class="tab-content">
-    <div class="card"><div class="card-title">Titular principal</div><p style="font-size:13px;color:#5c5c58">«Reduce hasta 25% el consumo de combustible en tus secadores — sin parar la producción en temporada»</p></div>
-    <div class="lp-row">
-      <div class="lp-block"><div class="lp-block-title">Hero</div>Imagen de secador de grano en campo. Foco en ahorro de combustible como gancho principal.</div>
-      <div class="lp-block"><div class="lp-block-title">Calculadora ROI</div>Herramienta: ingresa consumo actual de GLP/GN → muestra ahorro estimado anual en $CLP.</div>
-      <div class="lp-block"><div class="lp-block-title">Productos destacados</div>Quemadores + sistemas de control. Tabla: tipo cultivo / quemador recomendado.</div>
-      <div class="lp-block"><div class="lp-block-title">Estacionalidad</div>Destacar disponibilidad de stock antes de temporada + servicio de instalación express.</div>
-      <div class="lp-block"><div class="lp-block-title">Casos de éxito</div>Agricultor X: bajó de Y m³ a Z m³ por tonelada de grano secado.</div>
-      <div class="lp-block"><div class="lp-block-title">CTA</div>"Agenda visita técnica a tu planta" + número directo del ejecutivo agrícola de Imfluid.</div>
-    </div>
-  </div>
-</div>
-
-<!-- PESQUERAS -->
-<div id="panel-pesqueras" class="panel">
-  <div class="panel-header">
-    <div class="panel-title">Pesqueras</div>
-    <div class="panel-sub">Plantas de proceso, congelado IQF, conservas, harina de pescado</div>
-  </div>
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab(this,'pe')">Productos</button>
-    <button class="tab" onclick="switchTab(this,'pe')">Estrategia digital</button>
-    <button class="tab" onclick="switchTab(this,'pe')">Landing page</button>
-  </div>
-  <div class="tab-content active">
-    <div class="card"><div class="card-title">Criogenia — Prioridad 1</div><span class="badge b-teal">Válvulas criogénicas</span><span class="badge b-teal">Reguladores N₂/CO₂</span><span class="badge b-teal">Flexibles criogénicos</span><span class="badge b-teal">Detección de fugas</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">La congelación IQF (Individually Quick Frozen) con N₂ líquido o CO₂ es el estándar para productos del mar de exportación. Componentes criogénicos de alta fiabilidad son esenciales.</p></div>
-    <div class="card"><div class="card-title">Combustión — Prioridad 2</div><span class="badge b-blue">Quemadores calderas</span><span class="badge b-blue">Rampas de gas</span><span class="badge b-blue">Controles de combustión</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Cocción al vapor (conservas), generación de vapor para esterilización y harina de pescado.</p></div>
-    <div class="card"><div class="card-title">Control & Automatización</div><span class="badge b-gray">Transmisores temperatura</span><span class="badge b-gray">Registradores de proceso</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Trazabilidad de cadena de frío exigida por SERNAPESCA y mercados de exportación (UE, USA, Japón).</p></div>
-    <div class="pain">Pérdida de cadena de frío = rechazo de contenedores de exportación</div>
-    <div class="pain">Normas SERNAPESCA y de destino (FDA, RASFF) son altamente exigentes</div>
-    <div class="pain">Temporada de pesca acotada: no hay margen para paros por falla de equipos</div>
-  </div>
-  <div class="tab-content">
-    <div class="channel-grid">
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>LinkedIn</div><p style="font-size:12px;color:#5c5c58">Jefes de planta y gerentes técnicos de Camanchaca, Blumar, Friosur, Ventisqueros. Contenido sobre normativa exportación y trazabilidad.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>Email directo</div><p style="font-size:12px;color:#5c5c58">Base de datos sectorial. Envío de fichas técnicas de componentes criogénicos + invitación a visita técnica.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-med"></span>Google Ads</div><p style="font-size:12px;color:#5c5c58">"Congelación IQF componentes Chile", "válvulas nitrógeno líquido pesquera", "detección fugas CO2 planta proceso".</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-med"></span>Ferias pesqueras</div><p style="font-size:12px;color:#5c5c58">Expo Pesca & Acuicultura (Perú), Seafood Expo. Foco en clientes peruanos y chilenos.</p></div>
-    </div>
-    <div class="insight">«La cadena de frío de tu planta pesquera depende de componentes que no fallen — Imfluid te garantiza disponibilidad de repuestos críticos»</div>
-  </div>
-  <div class="tab-content">
-    <div class="card"><div class="card-title">Titular principal</div><p style="font-size:13px;color:#5c5c58">«Protege tu línea de congelado IQF con componentes criogénicos que cumplen los estándares de exportación globales»</p></div>
-    <div class="lp-row">
-      <div class="lp-block"><div class="lp-block-title">Hero</div>Imagen planta IQF. Foco en continuidad operacional y compliance de exportación.</div>
-      <div class="lp-block"><div class="lp-block-title">Normativa</div>SERNAPESCA, FDA 21 CFR, IFS Food. Cómo los productos Imfluid ayudan a cumplir.</div>
-      <div class="lp-block"><div class="lp-block-title">Productos CRYO</div>Catálogo con compatibilidad por fluido (N₂ líq., CO₂). Tiempo de entrega garantizado.</div>
-      <div class="lp-block"><div class="lp-block-title">Plan de mantenimiento</div>Ofrecer contratos de mantención preventiva para componentes críticos.</div>
-      <div class="lp-block"><div class="lp-block-title">Casos</div>Planta X: cero incidentes de cadena de frío en temporada completa.</div>
-      <div class="lp-block"><div class="lp-block-title">CTA</div>"Solicita auditoría técnica gratuita de tu sistema criogénico".</div>
-    </div>
-  </div>
-</div>
-
-<!-- MINERÍA -->
-<div id="panel-mineria" class="panel">
-  <div class="panel-header">
-    <div class="panel-title">Minería</div>
-    <div class="panel-sub">Gran minería del cobre, litio y hierro — operaciones en norte de Chile y Perú</div>
-  </div>
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab(this,'mi')">Productos</button>
-    <button class="tab" onclick="switchTab(this,'mi')">Estrategia digital</button>
-    <button class="tab" onclick="switchTab(this,'mi')">Landing page</button>
-  </div>
-  <div class="tab-content active">
-    <div class="card"><div class="card-title">Control & Automatización — Prioridad 1</div><span class="badge b-teal">Actuadores eléctricos y neumáticos</span><span class="badge b-teal">Válvulas de control</span><span class="badge b-teal">Transmisores P/T</span><span class="badge b-teal">Controladores UDC</span><span class="badge b-teal">Registradores</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">La automatización de procesos es crítica en minería. Planta concentradora, hidrometalurgia y pirometalurgia requieren instrumentación robusta para ambientes agresivos.</p></div>
-    <div class="card"><div class="card-title">GN/GLP — Prioridad 2</div><span class="badge b-blue">Reguladores</span><span class="badge b-blue">Sistemas de detección</span><span class="badge b-blue">Rampas de gas</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Suministro de combustible a flotas de equipos, hornos de fusión y generadores en faenas remotas.</p></div>
-    <div class="card"><div class="card-title">Combustión — Aplicable</div><span class="badge b-gray">Quemadores industriales</span><span class="badge b-gray">Sistemas eficiencia</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Fundiciones de cobre, hornos de calcinación de litio, calentadores de proceso en hidrometalurgia.</p></div>
-    <div class="pain">Cualquier falla = parada de planta = pérdidas de US$500K+ por hora en gran minería</div>
-    <div class="pain">Operación en zonas remotas: los repuestos deben estar disponibles localmente</div>
-    <div class="pain">Ciclos de compra muy largos pero contratos de marco de alto valor</div>
-  </div>
-  <div class="tab-content">
-    <div class="channel-grid">
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>LinkedIn (ABM)</div><p style="font-size:12px;color:#5c5c58">Account-Based Marketing: apuntar a cuentas específicas (Codelco, BHP, SQM, Antofagasta Minerals). Jefes de mantención, gerentes de operaciones, compradores técnicos.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>Portales de proveedores</div><p style="font-size:12px;color:#5c5c58">Registro y optimización en Ariba, Mercado Minero, portales de proveedores de Codelco y BHP. Esencial para el proceso de compra formal.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-med"></span>Expomin / Perumin</div><p style="font-size:12px;color:#5c5c58">Presencia en ferias mineras clave. Stand + presentaciones técnicas + captura de leads calificados.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-med"></span>Contenido técnico</div><p style="font-size:12px;color:#5c5c58">White papers: "Automatización en plantas concentradoras", "Instrumentación para ambientes corrosivos en minería".</p></div>
-    </div>
-    <div class="insight">«Instrumentación certificada para minería: los productos Imfluid están especificados para ambientes de alta exigencia y condiciones extremas»</div>
-    <div class="insight">«Acorta tus tiempos de parada no planificada: stock local de actuadores, válvulas y transmisores para gran minería»</div>
-  </div>
-  <div class="tab-content">
-    <div class="card"><div class="card-title">Titular principal</div><p style="font-size:13px;color:#5c5c58">«Instrumentación y control para minería de clase mundial — disponibilidad local, especificaciones para ambientes extremos»</p></div>
-    <div class="lp-row">
-      <div class="lp-block"><div class="lp-block-title">Hero</div>Imagen de planta minera. KPI prominente: "tiempo de respuesta a solicitudes técnicas". Foco en confiabilidad.</div>
-      <div class="lp-block"><div class="lp-block-title">Certificaciones</div>ATEX, SIL, IP67/68. Tabla de compatibilidad con ambientes: polvo, corrosión, temperatura extrema.</div>
-      <div class="lp-block"><div class="lp-block-title">Portafolio C&A</div>Actuadores, válvulas, transmisores filtrados por proceso: molienda, flotación, electrodeposición, lixiviación.</div>
-      <div class="lp-block"><div class="lp-block-title">Soporte técnico</div>SLA de respuesta, ingenieros certificados en terreno, cobertura en zonas mineras (Norte Grande).</div>
-      <div class="lp-block"><div class="lp-block-title">Proceso de compra</div>Guía: cómo ingresar como proveedor homologado. Links a portales de compra (Ariba, etc.).</div>
-      <div class="lp-block"><div class="lp-block-title">CTA</div>"Solicita homologación técnica" + "Agenda reunión con ejecutivo minero".</div>
-    </div>
-  </div>
-</div>
-
-<!-- ALIMENTOS -->
-<div id="panel-alimentos" class="panel">
-  <div class="panel-header">
-    <div class="panel-title">Alimentos</div>
-    <div class="panel-sub">Procesadoras, congelados, lácteos, carnes, bebidas</div>
-  </div>
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab(this,'al')">Productos</button>
-    <button class="tab" onclick="switchTab(this,'al')">Estrategia digital</button>
-    <button class="tab" onclick="switchTab(this,'al')">Landing page</button>
-  </div>
-  <div class="tab-content active">
-    <div class="card"><div class="card-title">Criogenia — Prioridad 1</div><span class="badge b-teal">Válvulas N₂/CO₂</span><span class="badge b-teal">Reguladores criogénicos</span><span class="badge b-teal">Sistemas detección CO₂</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Congelación criogénica IQF (carnes, vegetales, mariscos), envasado en atmósfera modificada (MAP), carbonatación con CO₂. Uno de los mercados de mayor crecimiento.</p></div>
-    <div class="card"><div class="card-title">Combustión — Prioridad 2</div><span class="badge b-blue">Quemadores para calderas</span><span class="badge b-blue">Sistemas de vapor</span><span class="badge b-blue">Control de temperatura</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Pasteurización, esterilización (UHT), cocinado industrial. Las calderas son el corazón energético de las plantas de alimentos.</p></div>
-    <div class="card"><div class="card-title">Control & Automatización</div><span class="badge b-gray">Registradores proceso</span><span class="badge b-gray">Controladores UDC</span><span class="badge b-gray">Transmisores T/P</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Trazabilidad de proceso para certificaciones: BRC, IFS, SQF, FSSC 22000. Registro continuo de temperatura es obligatorio.</p></div>
-    <div class="pain">Normativa de inocuidad alimentaria (HACCP, BRC, IFS) obliga a registro y control continuo</div>
-    <div class="pain">El CO₂ en espacios cerrados es riesgo grave para operarios (detección obligatoria)</div>
-    <div class="pain">Eficiencia energética en calderas es el mayor costo controlable de la planta</div>
-  </div>
-  <div class="tab-content">
-    <div class="channel-grid">
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>LinkedIn + Meta Ads</div><p style="font-size:12px;color:#5c5c58">Meta para alcanzar gerentes de planta y jefes de calidad. LinkedIn para decisores técnicos de empresas medianas y grandes del sector.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>SEO + Blog</div><p style="font-size:12px;color:#5c5c58">Contenido: "Cómo cumplir HACCP con registros automáticos", "Detección de CO₂ en plantas de alimentos", "Guía de calderas eficientes para industria alimentaria".</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-med"></span>Google Ads</div><p style="font-size:12px;color:#5c5c58">"Congelación IQF equipos Chile", "registrador temperatura HACCP", "detector CO2 sala proceso".</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-med"></span>Alianza con auditores</div><p style="font-size:12px;color:#5c5c58">Co-marketing con certificadoras BRC/IFS. Recomendación mutua en procesos de auditoría.</p></div>
-    </div>
-    <div class="insight">«Cumple HACCP y BRC con sistemas de registro automático y detección de gases certificados — Imfluid entiende las exigencias de la industria alimentaria»</div>
-  </div>
-  <div class="tab-content">
-    <div class="card"><div class="card-title">Titular principal</div><p style="font-size:13px;color:#5c5c58">«Tecnología de frío y control de proceso para plantas de alimentos que exportan con los más altos estándares»</p></div>
-    <div class="lp-row">
-      <div class="lp-block"><div class="lp-block-title">Hero</div>Imagen de planta de alimentos moderna. Énfasis en inocuidad + eficiencia.</div>
-      <div class="lp-block"><div class="lp-block-title">Certificaciones</div>Cómo los productos de Imfluid facilitan HACCP, BRC, IFS, FSSC 22000. Checklist descargable.</div>
-      <div class="lp-block"><div class="lp-block-title">Segmento CRYO</div>Congelación IQF: válvulas y reguladores. Tabla: carnes / lácteos / vegetales / mariscos.</div>
-      <div class="lp-block"><div class="lp-block-title">Segmento calderas</div>Quemadores eficientes + control de vapor. Calculadora de consumo energético.</div>
-      <div class="lp-block"><div class="lp-block-title">Seguridad CO₂</div>Detección de CO₂ en atmósferas modificadas: normativa y soluciones Imfluid.</div>
-      <div class="lp-block"><div class="lp-block-title">CTA</div>"Solicita auditoría técnica de tu planta" + descarga guía HACCP.</div>
-    </div>
-  </div>
-</div>
-
-<!-- FUNDICIÓN -->
-<div id="panel-fundicion" class="panel">
-  <div class="panel-header">
-    <div class="panel-title">Fundición</div>
-    <div class="panel-sub">Fundiciones de cobre, aluminio, hierro y acero — hornos de arco, reverbero y crisol</div>
-  </div>
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab(this,'fu')">Productos</button>
-    <button class="tab" onclick="switchTab(this,'fu')">Estrategia digital</button>
-    <button class="tab" onclick="switchTab(this,'fu')">Landing page</button>
-  </div>
-  <div class="tab-content active">
-    <div class="card"><div class="card-title">Combustión — Prioridad 1 (máxima especialización)</div><span class="badge b-teal">Quemadores alta temperatura</span><span class="badge b-teal">Ventiladores industriales</span><span class="badge b-teal">Controles de combustión</span><span class="badge b-teal">Rampas de gas</span><span class="badge b-teal">Sistemas eficiencia</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Los hornos de fundición son los mayores consumidores de combustible en una planta metalúrgica. El control preciso de temperatura y la relación aire-combustible determinan la calidad del fundido y el consumo energético.</p></div>
-    <div class="card"><div class="card-title">Control & Automatización — Prioridad 2</div><span class="badge b-blue">Controladores UDC</span><span class="badge b-blue">Transmisores temperatura alta gama</span><span class="badge b-blue">Registradores proceso</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Control de temperatura de horno, registro de ciclos de fundición, perfiles de temperatura para metalurgia de precisión.</p></div>
-    <div class="pain">Consumo de combustible en hornos puede superar el 60% del costo operativo</div>
-    <div class="pain">Variaciones de temperatura de ±5°C pueden causar rechazo de toda la colada</div>
-    <div class="pain">Los quemadores de baja calidad generan contaminantes (SO₂, NOx) que son multados</div>
-  </div>
-  <div class="tab-content">
-    <div class="channel-grid">
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>LinkedIn</div><p style="font-size:12px;color:#5c5c58">Gerentes de operaciones y jefes de mantención de fundiciones. Contenido técnico sobre eficiencia en hornos.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>Venta directa + SEO</div><p style="font-size:12px;color:#5c5c58">El sector es concentrado y relacional. SEO para captar búsquedas de especificación técnica de quemadores.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-med"></span>Webinars técnicos</div><p style="font-size:12px;color:#5c5c58">«Eficiencia energética en hornos de fundición: relación aire-combustible y su impacto». Lead magnet de alto valor.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-low"></span>Google Ads</div><p style="font-size:12px;color:#5c5c58">Volumen bajo pero intención alta. "quemadores horno fusión", "control temperatura fundición cobre".</p></div>
-    </div>
-    <div class="insight">«Un sistema de combustión optimizado puede reducir 20-30% el consumo de GN en hornos de fundición — Imfluid realiza el diagnóstico sin costo»</div>
-  </div>
-  <div class="tab-content">
-    <div class="card"><div class="card-title">Titular principal</div><p style="font-size:13px;color:#5c5c58">«Sistemas de combustión de alta temperatura para fundiciones: eficiencia energética sin comprometer la calidad metalúrgica»</p></div>
-    <div class="lp-row">
-      <div class="lp-block"><div class="lp-block-title">Hero</div>Imagen de horno de fundición en operación. Dato de ahorro energético potencial en grande.</div>
-      <div class="lp-block"><div class="lp-block-title">Especificaciones</div>Quemadores por temperatura máxima, potencia calorífica y tipo de combustible.</div>
-      <div class="lp-block"><div class="lp-block-title">Diagnóstico gratuito</div>Oferta central: visita técnica para medir eficiencia actual del horno y presentar propuesta.</div>
-      <div class="lp-block"><div class="lp-block-title">Emisiones</div>Cumplimiento DS 28 / DS 4 de emisiones industriales. Quemadores de bajas emisiones.</div>
-      <div class="lp-block"><div class="lp-block-title">Casos</div>Caso concreto: fundición X, ahorro Y% en GN tras modernización del sistema.</div>
-      <div class="lp-block"><div class="lp-block-title">CTA</div>"Solicita diagnóstico energético de tu horno" (formulario con tipo de horno y metal procesado).</div>
-    </div>
-  </div>
-</div>
-
-<!-- QUÍMICA -->
-<div id="panel-quimica" class="panel">
-  <div class="panel-header">
-    <div class="panel-title">Química</div>
-    <div class="panel-sub">Petroquímica, química fina, plantas de producción de gases especiales</div>
-  </div>
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab(this,'qu')">Productos</button>
-    <button class="tab" onclick="switchTab(this,'qu')">Estrategia digital</button>
-    <button class="tab" onclick="switchTab(this,'qu')">Landing page</button>
-  </div>
-  <div class="tab-content active">
-    <div class="card"><div class="card-title">Control & Automatización — Prioridad 1</div><span class="badge b-teal">Válvulas de control (proceso)</span><span class="badge b-teal">Actuadores neumáticos</span><span class="badge b-teal">Transmisores P/T</span><span class="badge b-teal">Controladores UDC</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">La industria química es la más intensiva en instrumentación de proceso. El control de variables es crítico para calidad del producto y seguridad del proceso.</p></div>
-    <div class="card"><div class="card-title">Criogenia — Prioridad 2</div><span class="badge b-blue">Válvulas criogénicas</span><span class="badge b-blue">Sistemas detección</span><span class="badge b-blue">Reguladores gases especiales</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Manejo de N₂ líquido (inerting), CO₂ (supercrítico), O₂ en reactores de oxidación, gases especiales de laboratorio.</p></div>
-    <div class="card"><div class="card-title">GN/GLP + Combustión</div><span class="badge b-gray">Rampas de gas</span><span class="badge b-gray">Cromatografía</span><span class="badge b-gray">Quemadores</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Análisis de composición de gas de proceso, combustión en hornos de calcinación y reactores térmicos.</p></div>
-    <div class="pain">La instrumentación debe cumplir clasificación de área (ATEX/IECEx) en zonas con riesgo de explosión</div>
-    <div class="pain">Trazabilidad de materias primas y variables de proceso para cumplir ISO/GMP</div>
-    <div class="pain">Tiempos de parada programada muy cortos: repuestos deben estar disponibles antes del shutdown</div>
-  </div>
-  <div class="tab-content">
-    <div class="channel-grid">
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>LinkedIn técnico</div><p style="font-size:12px;color:#5c5c58">Ingenieros de proceso y de instrumentación. Artículos técnicos sobre selección de válvulas para fluidos agresivos y zonas ATEX.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>SEO especializado</div><p style="font-size:12px;color:#5c5c58">Keywords de largo alcance: "válvulas control fluidos corrosivos", "transmisores ATEX zona 1", "instrumentación proceso químico".</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-med"></span>Documentación técnica</div><p style="font-size:12px;color:#5c5c58">Fichas de selección de materiales (SS 316, Hastelloy, PTFE). Tablas de compatibilidad química. Recursos de ingeniería de proceso.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-low"></span>Google Ads</div><p style="font-size:12px;color:#5c5c58">Campañas de alta especificidad. Bajo volumen, alto valor por lead. Foco en búsquedas de shutdown y reemplazo de componentes.</p></div>
-    </div>
-    <div class="insight">«Instrumentación de proceso certificada ATEX y compatible con fluidos agresivos — el socio técnico que los ingenieros químicos necesitan en LATAM»</div>
-  </div>
-  <div class="tab-content">
-    <div class="card"><div class="card-title">Titular principal</div><p style="font-size:13px;color:#5c5c58">«Instrumentación y control de proceso para la industria química: certificada, compatible y disponible en LATAM»</p></div>
-    <div class="lp-row">
-      <div class="lp-block"><div class="lp-block-title">Hero</div>Imagen de planta química moderna. Énfasis en seguridad y precisión de proceso.</div>
-      <div class="lp-block"><div class="lp-block-title">Selector técnico</div>Filtro: tipo de fluido / temperatura de proceso / presión / clasificación de área → producto recomendado.</div>
-      <div class="lp-block"><div class="lp-block-title">Certificaciones</div>ATEX/IECEx, SIL 2/3, materiales certificados. Tabla por categoría de producto.</div>
-      <div class="lp-block"><div class="lp-block-title">Recursos ingeniería</div>Tablas de compatibilidad química descargables, guías de selección de actuadores.</div>
-      <div class="lp-block"><div class="lp-block-title">Stock y tiempos</div>Inventario disponible para parada programada. "Consulta disponibilidad antes de tu turnaround".</div>
-      <div class="lp-block"><div class="lp-block-title">CTA</div>"Habla con un ingeniero de proceso" (no con un vendedor — diferenciación clave).</div>
-    </div>
-  </div>
-</div>
-
-<!-- PAPELERAS -->
-<div id="panel-papeleras" class="panel">
-  <div class="panel-header">
-    <div class="panel-title">Papeleras</div>
-    <div class="panel-sub">Celulosa, papel y cartón — calderas de recuperación, vapor de proceso</div>
-  </div>
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab(this,'pa')">Productos</button>
-    <button class="tab" onclick="switchTab(this,'pa')">Estrategia digital</button>
-    <button class="tab" onclick="switchTab(this,'pa')">Landing page</button>
-  </div>
-  <div class="tab-content active">
-    <div class="card"><div class="card-title">Combustión — Prioridad 1</div><span class="badge b-teal">Componentes para calderas</span><span class="badge b-teal">Quemadores de apoyo</span><span class="badge b-teal">Controles de combustión</span><span class="badge b-teal">Sistemas eficiencia energética</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Las calderas de recuperación (kraft) son el centro energético de la planta celulosa. Los quemadores de apoyo con GN/GLP son esenciales en arranques y períodos de baja carga de licor negro.</p></div>
-    <div class="card"><div class="card-title">GN/GLP — Prioridad 2</div><span class="badge b-blue">Reguladores</span><span class="badge b-blue">Medidores</span><span class="badge b-blue">Rampas de gas</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Suministro de GN/GLP para quemadores de apoyo en calderas de recuperación y calderas auxiliares.</p></div>
-    <div class="card"><div class="card-title">Control & Automatización</div><span class="badge b-gray">Controladores UDC</span><span class="badge b-gray">Registradores</span><span class="badge b-gray">Transmisores</span><p style="font-size:13px;color:#5c5c58;margin-top:8px">Control de vapor saturado y sobrecalentado, temperatura de gases de combustión, tiro de caldera.</p></div>
-    <div class="pain">Las paradas de caldera de recuperación son las más costosas de la industria</div>
-    <div class="pain">Las papeleras operan con márgenes ajustados: la eficiencia energética es estratégica</div>
-    <div class="pain">Sector muy concentrado en Chile (CMPC, Arauco) — relaciones de largo plazo y procesos de compra formales</div>
-  </div>
-  <div class="tab-content">
-    <div class="channel-grid">
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>Venta técnica directa</div><p style="font-size:12px;color:#5c5c58">El sector es muy concentrado. La estrategia principal es relacional. Los canales digitales apoyan y nutren la relación.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-high"></span>LinkedIn</div><p style="font-size:12px;color:#5c5c58">Contacto con jefes de ingeniería, gerentes de planta y compradores de CMPC y Arauco. Contenido sobre eficiencia en calderas de recuperación.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-med"></span>Email marketing</div><p style="font-size:12px;color:#5c5c58">Newsletter trimestral con actualizaciones de productos, casos de éxito en celulosa y alertas de normativa ambiental.</p></div>
-      <div class="channel-card"><div class="channel-name"><span class="priority-dot p-low"></span>Pulp & Paper eventos</div><p style="font-size:12px;color:#5c5c58">ABTCP Brasil, eventos de CORMA en Chile. Networking con tomadores de decisión del sector.</p></div>
-    </div>
-    <div class="insight">«En papeleras, la confianza se construye antes de la crisis: Imfluid te acompaña con stock, soporte técnico y rapidez cuando más lo necesitas»</div>
-  </div>
-  <div class="tab-content">
-    <div class="card"><div class="card-title">Titular principal</div><p style="font-size:13px;color:#5c5c58">«Soluciones de combustión y control para calderas de recuperación — el proveedor que las papeleras necesitan cuando no hay margen para el error»</p></div>
-    <div class="lp-row">
-      <div class="lp-block"><div class="lp-block-title">Hero</div>Imagen de caldera de recuperación. Foco en confiabilidad y disponibilidad de stock crítico.</div>
-      <div class="lp-block"><div class="lp-block-title">Aplicaciones</div>Caldera de recuperación / Caldera auxiliar / Evaporadores. Productos Imfluid para cada subsistema.</div>
-      <div class="lp-block"><div class="lp-block-title">Eficiencia energética</div>Sistemas de medición y optimización de combustión. Reducción de emisiones de NOx.</div>
-      <div class="lp-block"><div class="lp-block-title">Stock crítico</div>Lista de repuestos críticos con disponibilidad en bodega. Opción de contrato de abastecimiento preferente.</div>
-      <div class="lp-block"><div class="lp-block-title">Soporte shutdown</div>Equipo técnico disponible para paradas programadas de planta.</div>
-      <div class="lp-block"><div class="lp-block-title">CTA</div>"Conversemos antes de tu próxima parada" + calendario de paradas disponible para planificación conjunta.</div>
-    </div>
-  </div>
-</div>
-
-<!-- TRANSVERSAL -->
-<div id="panel-transversal" class="panel">
-  <div class="panel-header">
-    <div class="panel-title">Iniciativas transversales</div>
-    <div class="panel-sub">Estrategia coordinada de cross-reference, contenido y nuevos productos</div>
-  </div>
-  <div class="card">
-    <div class="card-title">1. Cross-reference entre industrias</div>
-    <p style="font-size:13px;color:#5c5c58;margin-bottom:8px">La fortaleza de Imfluid es que un mismo producto sirve a múltiples industrias. Usar esto estratégicamente:</p>
-    <ul class="pl">
-      <li>Crear <strong>páginas de producto</strong> con sección "Industrias de aplicación" que linken a cada landing page sectorial (SEO interno + cross-selling)</li>
-      <li>Mapa visual de producto × industria publicable como infografía en LinkedIn y el blog</li>
-      <li>Email de cross-sell: cliente pesquera que usa CRYO → campaña mostrando también productos de combustión para calderas</li>
-      <li>CRM tagging: etiquetar contactos por industria Y por línea de producto comprada → segmentar campañas de upsell</li>
-    </ul>
-  </div>
-  <div class="card">
-    <div class="card-title">2. Introducción de nuevos productos</div>
-    <ul class="pl">
-      <li><strong>Secuencia de lanzamiento:</strong> Teaser en LinkedIn (1 semana antes) → Email a base segmentada → Landing page de producto → Webinar de presentación técnica → Follow-up comercial a asistentes</li>
-      <li>Identificar la industria con mayor fit inmediato para hacer el primer caso de uso → usarlo como prueba social para las demás</li>
-      <li>Crear una sección "Novedades" en el sitio web con RSS alimentable a LinkedIn y email</li>
-    </ul>
-  </div>
-  <div class="card">
-    <div class="card-title">3. Arquitectura de contenido unificada</div>
-    <ul class="pl">
-      <li><strong>Pilar de contenido</strong> por línea de producto → artículos de cluster por industria de aplicación</li>
-      <li>Repositorio único de fichas técnicas en el sitio web, con acceso libre (sin gate) para SEO y descargables gatekeados para lead gen</li>
-      <li>Calendario editorial trimestral coordinado: blog + LinkedIn + email + YouTube deben hablar del mismo tema cada mes</li>
-      <li>1 webinar técnico mensual rotando por línea de producto e industria</li>
-    </ul>
-  </div>
-  <div class="card">
-    <div class="card-title">4. Automatización de marketing (CRM + email)</div>
-    <ul class="pl">
-      <li>Lead scoring basado en industria + línea de producto de interés + comportamiento web</li>
-      <li>Workflows de nurturing: lead descarga ficha técnica CRYO → secuencia de 4 emails con casos de uso + invitación a demo</li>
-      <li>Alertas al equipo comercial cuando un lead visita 3+ páginas de producto en la misma sesión</li>
-      <li>Integración formularios web → CRM → ejecutivo comercial responsable por industria</li>
-    </ul>
-  </div>
-  <div class="card">
-    <div class="card-title">5. Estructura del equipo de marketing recomendada</div>
-    <div class="metric-row">
-      <div class="metric"><div class="metric-label">Contenido + SEO</div><div class="metric-val" style="font-size:13px">1 redactor técnico</div></div>
-      <div class="metric"><div class="metric-label">Pauta digital</div><div class="metric-val" style="font-size:13px">1 especialista ADS</div></div>
-      <div class="metric"><div class="metric-label">CRM + automatiz.</div><div class="metric-val" style="font-size:13px">1 rev-ops</div></div>
-    </div>
-    <p style="font-size:12px;color:#5c5c58">Los ejecutivos comerciales son co-responsables del contenido técnico de su industria — ellos aportan el conocimiento, el equipo de marketing lo produce.</p>
-  </div>
-</div>
-
-<!-- WEB ANALYSIS -->
-<div id="panel-web" class="panel">
-  <div class="panel-header">
-    <div class="panel-title">Análisis y recomendaciones para imfluid.cl</div>
-    <div class="panel-sub">Basado en mejores prácticas B2B industrial — se recomienda complementar con auditoría técnica SEO</div>
-  </div>
-  <div class="section-label">Problemas típicos en sitios industriales B2B (a verificar en imfluid.cl)</div>
-  <div class="pain">Falta de landing pages sectoriales: el sitio habla de productos, no de industrias. Un cliente minero o pesquero no se ve reflejado.</div>
-  <div class="pain">Sin CTAs claros por etapa del embudo: el visitante no sabe si debe llamar, escribir o descargar algo.</div>
-  <div class="pain">Fichas técnicas en formato no indexable (imagen escaneada o PDF sin texto) → el SEO no captura búsquedas de especificaciones.</div>
-  <div class="pain">Velocidad de carga y mobile: el 40-60% del tráfico B2B en LATAM ya es móvil, incluso en ingeniería.</div>
-  <div class="pain">Sin blog o contenido técnico → el sitio no genera tráfico orgánico sostenible ni posiciona a Imfluid como referente.</div>
-  <div class="section-label">Estructura de sitio web recomendada</div>
-  <div class="card">
-    <div class="card-title">Arquitectura de información propuesta</div>
-    <ul class="pl">
-      <li><strong>Inicio:</strong> Propuesta de valor + 4 líneas de producto + 9 industrias como punto de entrada dual</li>
-      <li><strong>/industrias/[nombre]:</strong> Landing pages sectoriales (una por cada industria objetivo)</li>
-      <li><strong>/productos/[linea]/[producto]:</strong> Fichas técnicas con PDF descargable, tabla de especificaciones, industrias de aplicación</li>
-      <li><strong>/blog:</strong> Artículos técnicos SEO por industria y línea de producto (mínimo 2 por mes)</li>
-      <li><strong>/recursos:</strong> Fichas técnicas, guías de selección, calculadoras, webinars grabados</li>
-      <li><strong>/sobre-nosotros:</strong> Equipo técnico, certificaciones, clientes de referencia</li>
-    </ul>
-  </div>
-  <div class="card">
-    <div class="card-title">Quick wins para imfluid.cl (primeros 60 días)</div>
-    <div class="metric-row">
-      <div class="metric"><div class="metric-label">Prioridad 1</div><div class="metric-val" style="font-size:12px">Instalar Google Analytics 4 + Search Console + Hotjar</div></div>
-      <div class="metric"><div class="metric-label">Prioridad 2</div><div class="metric-val" style="font-size:12px">Crear 3 landing pages piloto (minería, gases combustible, alimentos)</div></div>
-      <div class="metric"><div class="metric-label">Prioridad 3</div><div class="metric-val" style="font-size:12px">Optimizar títulos y meta descriptions con keywords técnicas</div></div>
-    </div>
-    <ul class="pl">
-      <li>Agregar WhatsApp Business con mensaje de bienvenida segmentado por industria</li>
-      <li>Formulario de contacto con campo "industria" para segmentar leads automáticamente</li>
-      <li>Schema markup de organización y producto para mejorar snippets en Google</li>
-      <li>Velocidad web: comprimir imágenes, activar caché, CDN si es WordPress</li>
-    </ul>
-  </div>
-  <div class="insight">Para un análisis detallado del sitio actual de imfluid.cl (SEO técnico, UX, velocidad) se recomienda correr Screaming Frog, PageSpeed Insights y Semrush Site Audit como primer paso antes de comenzar las optimizaciones.</div>
-</div>
-
-</div>
-</div>
-</div>
-
-<!-- ==================== CALENDARIO ==================== -->
-<div id="sec-calendario" class="section-wrap">
-<div class="cal-wrap">
-<div class="top-bar">
-  <div class="month-tabs">
-    <button class="mtab active" onclick="showMonth(0,this)">Mes 1 — Fundación</button>
-    <button class="mtab" onclick="showMonth(1,this)">Mes 2 — Aceleración</button>
-    <button class="mtab" onclick="showMonth(2,this)">Mes 3 — Consolidación</button>
-  </div>
-  <div class="filters">
-    <span style="font-size:11px;color:#8a8a85;align-self:center">Filtrar:</span>
-    <button class="fchip ch-blog on" onclick="toggleFilter('blog',this)">Blog / SEO</button>
-    <button class="fchip ch-linkedin on" onclick="toggleFilter('linkedin',this)">LinkedIn</button>
-    <button class="fchip ch-email on" onclick="toggleFilter('email',this)">Email</button>
-    <button class="fchip ch-ads on" onclick="toggleFilter('ads',this)">Google Ads</button>
-    <button class="fchip ch-webinar on" onclick="toggleFilter('webinar',this)">Webinar</button>
-  </div>
-</div>
-
-<div class="legend">
-  <div class="leg-item"><div class="leg-dot" style="background:#639922"></div>Blog / SEO</div>
-  <div class="leg-item"><div class="leg-dot" style="background:#185FA5"></div>LinkedIn</div>
-  <div class="leg-item"><div class="leg-dot" style="background:#BA7517"></div>Email marketing</div>
-  <div class="leg-item"><div class="leg-dot" style="background:#D85A30"></div>Google Ads</div>
-  <div class="leg-item"><div class="leg-dot" style="background:#534AB7"></div>Webinar</div>
-</div>
-
-<!-- MES 1 -->
-<div class="month-panel active" id="month-0">
-  <div class="focus-bar"><strong>Foco del mes:</strong> Gases combustible + Minería — Infraestructura digital, primeras landing pages y campañas. Industrias foco: gases combustible, minería.</div>
-  <div class="month-header">
-    <div class="mstat"><div class="mstat-label">Piezas de contenido</div><div class="mstat-val">16</div></div>
-    <div class="mstat"><div class="mstat-label">Canales activos</div><div class="mstat-val">5</div></div>
-    <div class="mstat"><div class="mstat-label">Landing pages lanzadas</div><div class="mstat-val">2</div></div>
-  </div>
-
-  <div class="week-block">
-    <div class="week-label">Semana 1 <span class="week-obj">— Setup y primer contenido pilar</span></div>
-    <div class="cards-row">
-      <div class="entry ch-blog"><div class="entry-top"><div class="entry-title">Guía completa: reguladores de gas natural para redes industriales</div><span class="badge b-blog">Blog</span></div><div><span class="ind-tag">Gases combustible</span><span class="ind-tag">GN/GLP</span></div><div class="entry-note">Artículo pilar 1.500+ palabras. Keywords: "reguladores gas natural industrial Chile". Incluye tabla de selección por caudal.</div></div>
-      <div class="entry ch-linkedin"><div class="entry-top"><div class="entry-title">Presentación de Imfluid: 4 líneas, 9 industrias, 1 proveedor</div><span class="badge b-linkedin">LinkedIn</span></div><div><span class="ind-tag">Todas</span></div><div class="entry-note">Post de marca con infografía de líneas de producto. Anclar en el perfil de empresa. Meta: 500+ impresiones orgánicas.</div></div>
-      <div class="entry ch-ads"><div class="entry-top"><div class="entry-title">Lanzar campaña search — Gases combustible</div><span class="badge b-ads">Google Ads</span></div><div><span class="ind-tag">Gases combustible</span></div><div class="entry-note">Grupos de anuncios: reguladores GN, medidores GLP, vaporizadores GLP, detección fugas. Presupuesto diario inicial: $15-20 USD.</div></div>
-      <div class="entry ch-email"><div class="entry-top"><div class="entry-title">Email de reactivación a base de contactos existentes</div><span class="badge b-email">Email</span></div><div><span class="ind-tag">Todas</span></div><div class="entry-note">Reactivar base CRM. Asunto: "Imfluid se renueva — nuevas soluciones para tu industria". Segmentar por industria conocida.</div></div>
-    </div>
-  </div>
-  <div class="week-divider"></div>
-
-  <div class="week-block">
-    <div class="week-label">Semana 2 <span class="week-obj">— Landing page gases combustible + contenido SEO</span></div>
-    <div class="cards-row">
-      <div class="entry ch-blog"><div class="entry-top"><div class="entry-title">5 señales de que tu sistema de detección de fugas de GN necesita renovarse</div><span class="badge b-blog">Blog</span></div><div><span class="ind-tag">Gases combustible</span></div><div class="entry-note">Artículo orientado a ingenieros de mantenimiento. Incluye CTA a ficha técnica detectores Imfluid.</div></div>
-      <div class="entry ch-linkedin"><div class="entry-top"><div class="entry-title">Infografía: mapa de productos Imfluid por industria</div><span class="badge b-linkedin">LinkedIn</span></div><div><span class="ind-tag">Todas</span></div><div class="entry-note">Visual de cruce producto × industria. Diseño tipo matriz. Altísimo potencial de guardado y compartido.</div></div>
-      <div class="entry ch-linkedin"><div class="entry-top"><div class="entry-title">Post técnico: ¿GN o GLP? Diferencias clave para elegir tu sistema de regulación</div><span class="badge b-linkedin">LinkedIn</span></div><div><span class="ind-tag">Gases combustible</span><span class="ind-tag">Agro</span></div><div class="entry-note">Carrusel educativo de 6 slides. Formato de alto engagement en LinkedIn B2B.</div></div>
-      <div class="entry ch-ads"><div class="entry-top"><div class="entry-title">Publicar landing page gases combustible + activar remarketing</div><span class="badge b-ads">Google Ads</span></div><div><span class="ind-tag">Gases combustible</span></div><div class="entry-note">Configurar remarketing a visitantes de la landing. Pixel de conversión en formulario de contacto.</div></div>
-    </div>
-  </div>
-  <div class="week-divider"></div>
-
-  <div class="week-block">
-    <div class="week-label">Semana 3 <span class="week-obj">— Minería entra al calendario</span></div>
-    <div class="cards-row">
-      <div class="entry ch-blog"><div class="entry-top"><div class="entry-title">Actuadores para plantas mineras: guía de especificación técnica</div><span class="badge b-blog">Blog</span></div><div><span class="ind-tag">Minería</span><span class="ind-tag">C&A</span></div><div class="entry-note">Comparativa actuador eléctrico vs neumático. Tabla de selección por torque, temperatura y clasificación de área. 1.200 palabras.</div></div>
-      <div class="entry ch-linkedin"><div class="entry-top"><div class="entry-title">¿Cuánto le cuesta a tu minera una hora de parada por falla de actuador?</div><span class="badge b-linkedin">LinkedIn</span></div><div><span class="ind-tag">Minería</span></div><div class="entry-note">Post con dato impactante + solución. Llamada a la acción: "Descarga nuestra guía de especificación". Lead magnet.</div></div>
-      <div class="entry ch-ads"><div class="entry-top"><div class="entry-title">Lanzar campaña search — Minería + C&A</div><span class="badge b-ads">Google Ads</span></div><div><span class="ind-tag">Minería</span></div><div class="entry-note">Keywords: "actuadores neumáticos minería", "válvulas control planta concentradora", "transmisores presión ATEX". Landing minería.</div></div>
-      <div class="entry ch-email"><div class="entry-top"><div class="entry-title">Newsletter mes 1, semana 3 — Foco minería</div><span class="badge b-email">Email</span></div><div><span class="ind-tag">Minería</span></div><div class="entry-note">Enviar a segmento minería del CRM. Contenido: artículo de actuadores + invitación a visita técnica.</div></div>
-    </div>
-  </div>
-  <div class="week-divider"></div>
-
-  <div class="week-block">
-    <div class="week-label">Semana 4 <span class="week-obj">— Landing minería + anuncio webinar mes 2</span></div>
-    <div class="cards-row">
-      <div class="entry ch-blog"><div class="entry-top"><div class="entry-title">Vaporizadores GLP: tipos, criterios de selección y mantenimiento preventivo</div><span class="badge b-blog">Blog</span></div><div><span class="ind-tag">GLP</span><span class="ind-tag">Agroindustria</span></div><div class="entry-note">Artículo SEO para búsquedas de ingenieros que trabajan con GLP en zonas rurales. Incluye diagrama de instalación.</div></div>
-      <div class="entry ch-linkedin"><div class="entry-top"><div class="entry-title">Testimonio cliente sector gases: resultado real, no promesa</div><span class="badge b-linkedin">LinkedIn</span></div><div><span class="ind-tag">Gases combustible</span></div><div class="entry-note">Citar empresa (con permiso) o citar industria + resultado cuantificado. Formato: imagen + cita + métricas.</div></div>
-      <div class="entry ch-webinar"><div class="entry-top"><div class="entry-title">Anuncio webinar mes 2: "Optimización de sistemas GN/GLP en industria"</div><span class="badge b-webinar">Webinar</span></div><div><span class="ind-tag">Gases combustible</span><span class="ind-tag">Agro</span></div><div class="entry-note">Landing de registro. Difusión en LinkedIn Ads + email. Meta: 50+ inscritos para el webinar del mes 2.</div></div>
-      <div class="entry ch-ads"><div class="entry-top"><div class="entry-title">Publicar landing page minería + revisar métricas campañas mes 1</div><span class="badge b-ads">Google Ads</span></div><div><span class="ind-tag">Minería</span></div><div class="entry-note">Primera revisión de CTR, CPC y conversiones. Pausar palabras clave de bajo rendimiento. Ajustar pujas.</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- MES 2 -->
-<div class="month-panel" id="month-1">
-  <div class="focus-bar"><strong>Foco del mes:</strong> Alimentos + Criogenia — Primer webinar, contenido criogénico, landing page alimentos. Introducción a pesqueras.</div>
-  <div class="month-header">
-    <div class="mstat"><div class="mstat-label">Piezas de contenido</div><div class="mstat-val">17</div></div>
-    <div class="mstat"><div class="mstat-label">Webinar</div><div class="mstat-val">1 en vivo</div></div>
-    <div class="mstat"><div class="mstat-label">Landing pages lanzadas</div><div class="mstat-val">1 nueva</div></div>
-  </div>
-
-  <div class="week-block">
-    <div class="week-label">Semana 5 <span class="week-obj">— Webinar en vivo + criogenia entra al calendario</span></div>
-    <div class="cards-row">
-      <div class="entry ch-webinar"><div class="entry-top"><div class="entry-title">Webinar: "Sistemas de regulación GN/GLP — especificación, instalación y mantenimiento"</div><span class="badge b-webinar">Webinar</span></div><div><span class="ind-tag">Gases combustible</span><span class="ind-tag">Agro</span></div><div class="entry-note">60 min. Presentador: ingeniero técnico de Imfluid. Grabar para YouTube y reutilizar. Follow-up comercial a todos los asistentes en 48h.</div></div>
-      <div class="entry ch-blog"><div class="entry-top"><div class="entry-title">Congelación IQF con nitrógeno líquido: guía de componentes críticos</div><span class="badge b-blog">Blog</span></div><div><span class="ind-tag">Alimentos</span><span class="ind-tag">Pesqueras</span><span class="ind-tag">CRYO</span></div><div class="entry-note">Artículo pilar sobre criogenia alimentaria. Keywords: "válvulas nitrógeno líquido Chile", "componentes congelación IQF". 1.500 palabras + diagrama de sistema.</div></div>
-      <div class="entry ch-linkedin"><div class="entry-top"><div class="entry-title">Recap del webinar: 5 conclusiones clave sobre regulación de gas industrial</div><span class="badge b-linkedin">LinkedIn</span></div><div><span class="ind-tag">Gases combustible</span></div><div class="entry-note">Post al día siguiente del webinar. Incluir cifra de asistentes y link a grabación. Aprovecha el momentum de la audiencia.</div></div>
-      <div class="entry ch-email"><div class="entry-top"><div class="entry-title">Follow-up webinar: grabación + ficha técnica + CTA comercial</div><span class="badge b-email">Email</span></div><div><span class="ind-tag">Gases combustible</span></div><div class="entry-note">Para todos los inscritos (asistentes y ausentes). Asunto: "Tu acceso a la grabación + material complementario". Disparador de nurturing.</div></div>
-    </div>
-  </div>
-  <div class="week-divider"></div>
-
-  <div class="week-block">
-    <div class="week-label">Semana 6 <span class="week-obj">— Alimentos: landing + campaña + contenido seguridad</span></div>
-    <div class="cards-row">
-      <div class="entry ch-blog"><div class="entry-top"><div class="entry-title">Detección de CO₂ en plantas de alimentos: normativa, riesgos y soluciones</div><span class="badge b-blog">Blog</span></div><div><span class="ind-tag">Alimentos</span><span class="ind-tag">C&A</span></div><div class="entry-note">Contenido de seguridad industrial de alta relevancia. Apunta a jefes de prevención y jefes de calidad. Incluye tabla de límites de exposición por normativa.</div></div>
-      <div class="entry ch-linkedin"><div class="entry-top"><div class="entry-title">Infografía: ¿qué línea Imfluid necesita tu industria? (versión actualizada)</div><span class="badge b-linkedin">LinkedIn</span></div><div><span class="ind-tag">Todas</span></div><div class="entry-note">Segunda versión del mapa de productos, ahora con aplicaciones específicas por industria. Carousel de 8 slides. Formato de alto guardado.</div></div>
-      <div class="entry ch-ads"><div class="entry-top"><div class="entry-title">Lanzar campaña search — Alimentos + Criogenia</div><span class="badge b-ads">Google Ads</span></div><div><span class="ind-tag">Alimentos</span><span class="ind-tag">Pesqueras</span></div><div class="entry-note">Keywords: "congelación IQF componentes Chile", "detector CO2 planta proceso", "registrador temperatura HACCP". Landing alimentos.</div></div>
-      <div class="entry ch-email"><div class="entry-top"><div class="entry-title">Newsletter mes 2 — Criogenia y alimentos: la cadena de frío sin fallas</div><span class="badge b-email">Email</span></div><div><span class="ind-tag">Alimentos</span><span class="ind-tag">Pesqueras</span></div><div class="entry-note">Enviar a segmentos alimentos y pesqueras. Contenido: artículo IQF + intro al portafolio CRYO + CTA auditoría gratuita.</div></div>
-    </div>
-  </div>
-  <div class="week-divider"></div>
-
-  <div class="week-block">
-    <div class="week-label">Semana 7 <span class="week-obj">— Contenido de eficiencia energética + primer caso de éxito</span></div>
-    <div class="cards-row">
-      <div class="entry ch-blog"><div class="entry-top"><div class="entry-title">Control de combustión en calderas: cómo la relación aire-combustible impacta tu factura energética</div><span class="badge b-blog">Blog</span></div><div><span class="ind-tag">Combustión</span><span class="ind-tag">Alimentos</span><span class="ind-tag">Agro</span></div><div class="entry-note">Artículo técnico de alto valor para ingenieros. Incluye fórmulas, gráficos de eficiencia y link a sistemas de control Imfluid.</div></div>
-      <div class="entry ch-linkedin"><div class="entry-top"><div class="entry-title">Caso de éxito: [cliente X] redujo X% el consumo de GN con nuestros controles de combustión</div><span class="badge b-linkedin">LinkedIn</span></div><div><span class="ind-tag">Combustión</span></div><div class="entry-note">Primer caso de éxito publicado. Formato: imagen de planta + dato clave + historia en 3 párrafos. Validar datos con cliente antes de publicar.</div></div>
-      <div class="entry ch-linkedin"><div class="entry-top"><div class="entry-title">Serie "Dato técnico Imfluid" #1: diferencias entre registradores analógicos y digitales en proceso</div><span class="badge b-linkedin">LinkedIn</span></div><div><span class="ind-tag">C&A</span><span class="ind-tag">Química</span></div><div class="entry-note">Post corto educativo. Fácil de consumir. Meta: posicionar a Imfluid como referente técnico, no solo proveedor.</div></div>
-      <div class="entry ch-webinar"><div class="entry-top"><div class="entry-title">Anuncio webinar mes 3: "Eficiencia energética en secadores agrícolas"</div><span class="badge b-webinar">Webinar</span></div><div><span class="ind-tag">Agroindustria</span></div><div class="entry-note">Landing de registro para webinar de mes 3. Difusión segmentada a contactos de agroindustria. Meta: 40+ inscritos.</div></div>
-    </div>
-  </div>
-  <div class="week-divider"></div>
-
-  <div class="week-block">
-    <div class="week-label">Semana 8 <span class="week-obj">— Contenido C&A + nurturing CRYO + anuncio webinar mes 3</span></div>
-    <div class="cards-row">
-      <div class="entry ch-blog"><div class="entry-top"><div class="entry-title">Guía de transmisores de presión y temperatura para procesos industriales exigentes</div><span class="badge b-blog">Blog</span></div><div><span class="ind-tag">C&A</span><span class="ind-tag">Química</span><span class="ind-tag">Minería</span></div><div class="entry-note">Artículo de especificación: rangos de presión, materiales de proceso, clasificación ATEX. Con tabla comparativa de modelos Imfluid.</div></div>
-      <div class="entry ch-email"><div class="entry-top"><div class="entry-title">Secuencia nurturing CRYO: "Tu guía completa de componentes criogénicos" (email 1/3)</div><span class="badge b-email">Email</span></div><div><span class="ind-tag">Alimentos</span><span class="ind-tag">Pesqueras</span></div><div class="entry-note">Trigger: descarga de ficha técnica CRYO. Email 1: introducción al portafolio. Email 2 (día 4): caso de éxito. Email 3 (día 8): CTA demo técnica.</div></div>
-      <div class="entry ch-linkedin"><div class="entry-top"><div class="entry-title">Serie "Dato técnico" #2: ¿cuándo usar actuador eléctrico vs neumático?</div><span class="badge b-linkedin">LinkedIn</span></div><div><span class="ind-tag">C&A</span><span class="ind-tag">Minería</span></div><div class="entry-note">Carrusel comparativo. Criterios de selección: disponibilidad de aire, velocidad de respuesta, fail-safe, coste de instalación.</div></div>
-      <div class="entry ch-ads"><div class="entry-top"><div class="entry-title">Optimización campañas mes 2: pausar keywords de bajo CTR, subir puja a top performers</div><span class="badge b-ads">Google Ads</span></div><div><span class="ind-tag">Todas</span></div><div class="entry-note">Revisar Search Terms Report. Agregar negativos. Testear variación de anuncio (A/B). Meta: bajar CPC 15% vs mes 1.</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- MES 3 -->
-<div class="month-panel" id="month-2">
-  <div class="focus-bar"><strong>Foco del mes:</strong> Agroindustria + Fundición — Cierre del trimestre, todas las landing pages activas, medición de resultados y ajuste de estrategia.</div>
-  <div class="month-header">
-    <div class="mstat"><div class="mstat-label">Piezas de contenido</div><div class="mstat-val">18</div></div>
-    <div class="mstat"><div class="mstat-label">Landing pages totales activas</div><div class="mstat-val">5</div></div>
-    <div class="mstat"><div class="mstat-label">Revisión de KPIs</div><div class="mstat-val">Semana 12</div></div>
-  </div>
-
-  <div class="week-block">
-    <div class="week-label">Semana 9 <span class="week-obj">— Webinar agroindustria + landing agro</span></div>
-    <div class="cards-row">
-      <div class="entry ch-webinar"><div class="entry-top"><div class="entry-title">Webinar: "Eficiencia energética en secadores de grano — quemadores y control de combustión"</div><span class="badge b-webinar">Webinar</span></div><div><span class="ind-tag">Agroindustria</span><span class="ind-tag">Combustión</span></div><div class="entry-note">Presenter: jefe técnico de línea Combustión. Contenido: tipos de quemadores, relación aire-combustible, ROI de modernización. Meta: 40+ asistentes.</div></div>
-      <div class="entry ch-blog"><div class="entry-top"><div class="entry-title">Quemadores para secadores de grano: selección por capacidad, combustible y tipo de cultivo</div><span class="badge b-blog">Blog</span></div><div><span class="ind-tag">Agroindustria</span><span class="ind-tag">Combustión</span></div><div class="entry-note">Artículo pilar para agroindustria. Tabla: tipo de cultivo (trigo, maíz, soja, fruta) → quemador recomendado → consumo estimado GLP/GN.</div></div>
-      <div class="entry ch-linkedin"><div class="entry-top"><div class="entry-title">¿Cuánto GLP consume tu secador por tonelada de grano? Compara con los promedios del sector</div><span class="badge b-linkedin">LinkedIn</span></div><div><span class="ind-tag">Agroindustria</span></div><div class="entry-note">Post con dato de benchmark + CTA calculadora de eficiencia. Pre-temporada: publicar antes de cosecha para captar atención temprana.</div></div>
-      <div class="entry ch-email"><div class="entry-top"><div class="entry-title">Follow-up webinar agro + lanzamiento landing agroindustria</div><span class="badge b-email">Email</span></div><div><span class="ind-tag">Agroindustria</span></div><div class="entry-note">A inscritos del webinar: grabación + link a landing + oferta de visita técnica gratuita a planta. Urgencia: "antes de temporada".</div></div>
-    </div>
-  </div>
-  <div class="week-divider"></div>
-
-  <div class="week-block">
-    <div class="week-label">Semana 10 <span class="week-obj">— Fundición entra + contenido de alto nivel técnico</span></div>
-    <div class="cards-row">
-      <div class="entry ch-blog"><div class="entry-top"><div class="entry-title">Sistemas de control en fundiciones: temperatura, eficiencia y cumplimiento ambiental DS 28</div><span class="badge b-blog">Blog</span></div><div><span class="ind-tag">Fundición</span><span class="ind-tag">Combustión</span><span class="ind-tag">C&A</span></div><div class="entry-note">Artículo técnico-regulatorio. Relaciona control de combustión + normativa de emisiones en Chile. Alta diferenciación frente a competidores.</div></div>
-      <div class="entry ch-linkedin"><div class="entry-top"><div class="entry-title">Infografía: ROI de modernizar tu sistema de combustión en horno de fundición</div><span class="badge b-linkedin">LinkedIn</span></div><div><span class="ind-tag">Fundición</span></div><div class="entry-note">Visual con flujo: inversión → ahorro anual en GN → payback. Datos del sector. Call-to-action: "Solicita diagnóstico gratuito de tu horno".</div></div>
-      <div class="entry ch-email"><div class="entry-top"><div class="entry-title">Newsletter mes 3 — Agroindustria y fundición: eficiencia energética como ventaja competitiva</div><span class="badge b-email">Email</span></div><div><span class="ind-tag">Agroindustria</span><span class="ind-tag">Fundición</span></div><div class="entry-note">Segmentado a contactos de ambas industrias. Contenido: artículos del mes + invitación a diagnóstico técnico presencial.</div></div>
-      <div class="entry ch-ads"><div class="entry-top"><div class="entry-title">Lanzar campaña search — Agroindustria + Fundición</div><span class="badge b-ads">Google Ads</span></div><div><span class="ind-tag">Agroindustria</span><span class="ind-tag">Fundición</span></div><div class="entry-note">Keywords: "quemadores secadores agrícolas Chile", "control temperatura horno fundición", "eficiencia energética combustión industrial".</div></div>
-    </div>
-  </div>
-  <div class="week-divider"></div>
-
-  <div class="week-block">
-    <div class="week-label">Semana 11 <span class="week-obj">— Contenido HACCP + reactivación leads fríos</span></div>
-    <div class="cards-row">
-      <div class="entry ch-blog"><div class="entry-top"><div class="entry-title">Checklist descargable: instrumentación para auditoría HACCP en plantas de alimentos</div><span class="badge b-blog">Blog</span></div><div><span class="ind-tag">Alimentos</span><span class="ind-tag">C&A</span></div><div class="entry-note">Lead magnet de alto valor. Gated (formulario para descargar). Integrar en landing alimentos y en LinkedIn Ads. Disparador de secuencia nurturing.</div></div>
-      <div class="entry ch-linkedin"><div class="entry-top"><div class="entry-title">Serie "Dato técnico" #3: cómo un controlador UDC reduce el consumo en procesos térmicos</div><span class="badge b-linkedin">LinkedIn</span></div><div><span class="ind-tag">C&A</span><span class="ind-tag">Alimentos</span><span class="ind-tag">Fundición</span></div><div class="entry-note">Post educativo con comparativa: control manual vs UDC. Datos de ahorro energético cuantificado. Link al artículo del blog.</div></div>
-      <div class="entry ch-email"><div class="entry-top"><div class="entry-title">Campaña de reactivación: leads fríos del mes 1 y 2 que no convirtieron</div><span class="badge b-email">Email</span></div><div><span class="ind-tag">Todas</span></div><div class="entry-note">Asunto: "Antes de que cierre el trimestre — ¿podemos ayudarte?". Oferta de visita técnica o llamada de 20 min con especialista. Secuencia de 2 emails.</div></div>
-      <div class="entry ch-ads"><div class="entry-top"><div class="entry-title">Optimización final de campañas Q1: reasignar presupuesto a industrias de mejor CPL</div><span class="badge b-ads">Google Ads</span></div><div><span class="ind-tag">Todas</span></div><div class="entry-note">Mover presupuesto hacia campañas con menor costo por lead. Preparar estructura de campañas para Q2 con learnings del trimestre.</div></div>
-    </div>
-  </div>
-  <div class="week-divider"></div>
-
-  <div class="week-block">
-    <div class="week-label">Semana 12 <span class="week-obj">— Cierre Q1: análisis de KPIs y proyección Q2</span></div>
-    <div class="cards-row">
-      <div class="entry ch-blog"><div class="entry-top"><div class="entry-title">Cromatografía de gas natural: cómo garantizar la calidad del gas en redes de distribución</div><span class="badge b-blog">Blog</span></div><div><span class="ind-tag">Gases combustible</span><span class="ind-tag">GN</span></div><div class="entry-note">Artículo técnico de nicho. Posiciona a Imfluid en cromatografía GN, diferenciador competitivo. Incluye casos de uso y CTA a ficha técnica.</div></div>
-      <div class="entry ch-linkedin"><div class="entry-top"><div class="entry-title">Cierre de trimestre: lo que aprendimos sobre la industria y lo que viene</div><span class="badge b-linkedin">LinkedIn</span></div><div><span class="ind-tag">Todas</span></div><div class="entry-note">Post reflexivo de marca. No revelar datos sensibles. Sí mostrar: webinars realizados, industrias abordadas, engagement. Teaser de próximos temas Q2.</div></div>
-      <div class="entry ch-email"><div class="entry-top"><div class="entry-title">Newsletter cierre Q1 + preview de lo que viene en Q2</div><span class="badge b-email">Email</span></div><div><span class="ind-tag">Todas</span></div><div class="entry-note">Resumen del trimestre + anuncio de los temas de Q2 (papeleras, química, nueva línea de producto). Fidelización de la base de suscriptores.</div></div>
-      <div class="entry ch-webinar"><div class="entry-top"><div class="entry-title">Reunión interna: revisión de KPIs Q1 y planificación calendario Q2</div><span class="badge b-webinar">Revisión</span></div><div><span class="ind-tag">Equipo</span></div><div class="entry-note">Métricas a revisar: leads generados por canal e industria, CPL por campaña, tráfico orgánico, tasa de apertura emails, asistentes a webinars, oportunidades en CRM.</div></div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-
-</div>
+<a href="https://wa.me/56983046729?text=Hola%2C%20me%20interesa%20evaluar%20el%20cambio%20a%20veh%C3%ADculo%20el%C3%A9ctrico%20con%20subsidio%20PIE" target="_blank" class="whatsapp-float" title="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 <script>
-/* === Section switcher === */
-function switchSection(id, btn) {
-  document.querySelectorAll('.section-wrap').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.app-nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('sec-' + id).classList.add('active');
-  btn.classList.add('active');
+const CUOTA=410000,COSTO_EL_KM=40;
+const sKm=document.getElementById('km-dia'),sDias=document.getElementById('dias-mes'),sRend=document.getElementById('rendimiento'),iPrecio=document.getElementById('precio-combustible');
+function fmt(n){return'$'+Math.round(n).toLocaleString('es-CL')}
+function anim(el,s,e,d){const r=e-s,t0=performance.now();function u(t){const p=Math.min((t-t0)/d,1),ea=1-Math.pow(1-p,3),c=s+r*ea;if(el.dataset.format==='percent')el.textContent=Math.round(c)+'% de la cuota';else if(el.dataset.format==='pago')el.textContent=e<=0?'Tu ahorro cubre la cuota completa':fmt(c)+' / mes';else el.textContent=fmt(c);if(p<1)requestAnimationFrame(u)}requestAnimationFrame(u)}
+function calc(){
+  const km=+sKm.value,dias=+sDias.value,rend=+sRend.value,precio=+iPrecio.value||1300;
+  const kmM=km*dias,litros=kmM/rend,gC=litros*precio,gE=kmM*COSTO_EL_KM,ahorro=gC-gE,pct=(ahorro/CUOTA)*100,pago=CUOTA-ahorro;
+  document.getElementById('km-val').textContent=km+' km';
+  document.getElementById('dias-val').textContent=dias+' días';
+  document.getElementById('rend-val').textContent=rend+' km/lt';
+  const els=['res-gasto-combustible','res-gasto-electrico','res-ahorro','res-porcentaje','res-pago-real'];
+  const vals=[gC,gE,ahorro,pct,pago];const fmts=[null,null,null,'percent','pago'];
+  els.forEach((id,i)=>{const el=document.getElementById(id);const prev=+(el.dataset.val||0);el.dataset.val=vals[i];if(fmts[i])el.dataset.format=fmts[i];anim(el,prev,vals[i],400)});
+  const mx=Math.max(gC,gE,1);
+  document.getElementById('bar-combustible').style.width=(gC/mx*100)+'%';document.getElementById('bar-combustible').textContent=fmt(gC);
+  document.getElementById('bar-electrico').style.width=(gE/mx*100)+'%';document.getElementById('bar-electrico').textContent=fmt(gE);
+  document.getElementById('cta-ahorro').textContent=fmt(ahorro);document.getElementById('modal-ahorro-val').textContent=fmt(ahorro);
+  ['f','m'].forEach(p=>{document.getElementById(p+'-km-diarios').value=km;document.getElementById(p+'-gasto-estimado').value=Math.round(gC);document.getElementById(p+'-ahorro-calculado').value=Math.round(ahorro)});
 }
+sKm.addEventListener('input',calc);sDias.addEventListener('input',calc);sRend.addEventListener('input',calc);iPrecio.addEventListener('input',calc);calc();
 
-/* === Strategy panel navigation === */
-function showPanel(id) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  var panel = document.getElementById('panel-' + id);
-  if (panel) { panel.classList.add('active'); resetTabs(panel); }
-  if (event && event.currentTarget) event.currentTarget.classList.add('active');
-  // If clicked from overview card, highlight the correct sidebar button
-  document.querySelectorAll('.nav-item').forEach(function(n) {
-    if (n.getAttribute('onclick') && n.getAttribute('onclick').indexOf("'" + id + "'") > -1) {
-      n.classList.add('active');
-    }
-  });
-}
+function openModal(){document.getElementById('modal-overlay').classList.add('active');document.body.style.overflow='hidden'}
+function closeModal(){document.getElementById('modal-overlay').classList.remove('active');document.body.style.overflow=''}
+document.getElementById('modal-overlay').addEventListener('click',function(e){if(e.target===this)closeModal()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
 
-function resetTabs(panel) {
-  panel.querySelectorAll('.tab').forEach(function(t, i) { t.classList.toggle('active', i === 0); });
-  panel.querySelectorAll('.tab-content').forEach(function(c, i) { c.classList.toggle('active', i === 0); });
-}
+function collectData(f){const d={};new FormData(f).forEach((v,k)=>d[k]=v);d.timestamp=new Date().toISOString();d.source='landing-emobilitex';return d}
+function handleFormSubmit(e){e.preventDefault();const d=collectData(e.target);
+  // ====== CONECTAR WEBHOOK/CRM AQUÍ ======
+  console.log('📋 Lead (form):',d);alert('¡Gracias '+(d.nombre||'')+'! Te contactaremos pronto.');e.target.reset()}
+function handleModalSubmit(e){e.preventDefault();const d=collectData(e.target);
+  // ====== CONECTAR WEBHOOK/CRM AQUÍ ======
+  console.log('📋 Lead (modal):',d);alert('¡Excelente '+(d.nombre||'')+'! Ahorro estimado: '+document.getElementById('modal-ahorro-val').textContent+'/mes. Te contactamos pronto.');closeModal();e.target.reset()}
 
-function switchTab(btn, prefix) {
-  var panel = btn.closest('.panel');
-  var tabs = panel.querySelectorAll('.tab');
-  var contents = panel.querySelectorAll('.tab-content');
-  var idx = Array.from(tabs).indexOf(btn);
-  tabs.forEach(function(t) { t.classList.remove('active'); });
-  contents.forEach(function(c) { c.classList.remove('active'); });
-  btn.classList.add('active');
-  if (contents[idx]) contents[idx].classList.add('active');
-}
-
-/* === Calendar === */
-var activeFilters = new Set(['blog', 'linkedin', 'email', 'ads', 'webinar']);
-
-function showMonth(idx, btn) {
-  document.querySelectorAll('.month-panel').forEach(function(p, i) { p.classList.toggle('active', i === idx); });
-  document.querySelectorAll('.mtab').forEach(function(t) { t.classList.remove('active'); });
-  btn.classList.add('active');
-}
-
-function toggleFilter(ch, btn) {
-  if (activeFilters.has(ch)) {
-    if (activeFilters.size > 1) { activeFilters.delete(ch); btn.classList.remove('on'); }
-  } else {
-    activeFilters.add(ch); btn.classList.add('on');
-  }
-  applyFilters();
-}
-
-function applyFilters() {
-  document.querySelectorAll('.entry').forEach(function(e) {
-    var ch = e.className.match(/ch-(\w+)/);
-    if (ch) e.classList.toggle('hidden', !activeFilters.has(ch[1]));
-  });
-}
+const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')}),{threshold:.15});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('nav').style.boxShadow=window.scrollY>50?'0 2px 20px rgba(177,63,255,.12)':'none'});
 </script>
 </body>
 </html>
